@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app='rrs'>
+  <head >
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rare Rock Shop</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./public/app/styles/main.sass">
+  </head>
+  <body ng-controller="mainCtrl">
+
+    <!-- <h1>Test HTML</h1>
+    <h1 class="testcss">{{test}}</h1> -->
+
+    <header-directive></header-directive>
+
+
+
+    <ui-view></ui-view>
+
+
+
+    <footer-directive></footer-directive>
+
+    <!-- Scripts -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <script src ='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="./app/app.js" charset="utf-8"></script>
+    <script src="./app/js/controllers/mainCtrl.js" charset="utf-8"></script>
+    <script src='./app/js/directives/headerDirective.js'></script>
+    <script src='./app/js/directives/footerDirective.js'></script>
+    <script src="./app/js/service/service.js" charset="utf-8"></script>
+  </body>
+</html>
