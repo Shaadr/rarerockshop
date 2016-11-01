@@ -69,24 +69,6 @@ angular.module('rrs', ['ui.router'])
     })
   }])
 
-angular.module('rrs')
-  .directive('footerDirective', function() {
-    return {
-      restrict: 'EA',
-      templateUrl: './views/templates/footerTmpl.html',
-      // link ,
-    }
-  })
-
-angular.module('rrs')
-  .directive('headerDirective', function() {
-    return {
-      restrict: 'EA',
-      templateUrl: './views/templates/headerTmpl.html',
-      // link ,
-    }
-  })
-
 // INITILIZE CONTROLLER
 // ============================================================
 angular.module("rrs").controller("accountCtrl", ["$scope", function($scope) {
@@ -110,6 +92,24 @@ angular.module('rrs').controller("mainCtrl", ["$scope", function($scope) {
   // FUNCTIONS
   // ============================================================
 }]);
+
+angular.module('rrs')
+  .directive('footerDirective', function() {
+    return {
+      restrict: 'EA',
+      templateUrl: './views/templates/footerTmpl.html',
+      // link ,
+    }
+  })
+
+angular.module('rrs')
+  .directive('headerDirective', function() {
+    return {
+      restrict: 'EA',
+      templateUrl: './views/templates/headerTmpl.html',
+      // link ,
+    }
+  })
 
 // INITILIZE SERVICE
 // ============================================================
