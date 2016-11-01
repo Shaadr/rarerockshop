@@ -1,1 +1,62 @@
-<h1>Admin</h1>
+<section class="adminTopContainer">
+  <div class="adminTopText">
+    <h1>Welcome Paul</h1>
+    <h4>Add Products to Collectcion or Shop below</h4>
+  </div>
+  <div class="adminLogo">
+    <img src="http://www.web-corpora.net/RLC/static/img/placeholder.png" alt="" />
+  </div>
+</section>
+
+
+<section class="adminLeftSection">
+  <section class="adminFilterContainer">
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Add too...
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li>Collection</li>
+        <li>Shop</li>
+        <li>Both</li>
+        <li role="separator" class="divider"></li>
+        <li>Other</li>
+      </ul>
+    </div>
+
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Category...
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li>Rough</li>
+        <li>Cabs</li>
+        <li>Jewelery</li>
+        <li>Lapidary</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="adminFormContainer">
+    <form class="adminForm" action="index.html">
+      <input type="text" name="name" value="" placeholder="Name">
+      <input type="text" name="name" value="" placeholder="Price">
+      <input type="text" name="name" value="" placeholder="Weight">
+      <input type="text" name="name" value="" placeholder="Measurement">
+      <input type="text" name="name" value="" placeholder="Description...">
+      <input type="Submit" name="name" value="Submit">
+    </form>
+  </section>
+</section>
+
+<section class="adminRightSection">
+  <h5>Drag and Drop Photos or Browse to add Photos</h5>
+  <form id="form1" runat="server">
+    <input type='file' id="imgInp" ng-model="url" ng-change="getImageUrl(event)"/> {{url}}
+    <img id="blah" ng-src="{{url}}" alt="your image" />
+  </form>
+
+
+</section>

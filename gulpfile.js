@@ -7,14 +7,22 @@ var annotate = require('gulp-ng-annotate');
 var watch = require('gulp-watch');
 var sass = require('gulp-sass');
 var babel = require('gulp-babel');
+var nodemon = require('gulp-nodemon')
 // DECLARE FILE PATHS
 // ============================================================
 var paths = {
   jsSource: ['./public/app/**/*.js', '!/public/bundle.js'],
-  sassSource: ['./public/app/**/*.sass']
+  sassSource: ['./public/app/**/*.sass'],
+  server: ['server/server.js']
 };
 // DEFINE TASKS
 // ============================================================
+gulp.task('serve', function() {
+    nodemon({
+        'script': paths.server[0]
+    });
+});
+
 gulp.task('js', function() {
   return gulp.src(paths.jsSource)
   //.pipe(babel()) //Uncomment if using ES6
@@ -38,4 +46,4 @@ gulp.task('watch', function() {
 });
 // DEFAULT TASK - first thing to run when gulp is called
 // ============================================================
-gulp.task('default', ['watch', 'js', 'sass']);
+gulp.task('default', ['js','sass','watch','serve']);

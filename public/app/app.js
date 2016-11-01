@@ -19,8 +19,8 @@ angular.module('rrs', ['ui.router'])
     })
     .state('admin', {
       templateUrl: '/views/admin.html',
-      // controller: 'adminCtrl',
-      url: '/admin/:id'
+      controller: 'adminCtrl',
+      url: '/admin'
     })
     .state('cart', {
       templateUrl: '/views/cart.html',

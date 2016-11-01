@@ -19,8 +19,8 @@ angular.module('rrs', ['ui.router'])
     })
     .state('admin', {
       templateUrl: '/views/admin.html',
-      // controller: 'adminCtrl',
-      url: '/admin/:id'
+      controller: 'adminCtrl',
+      url: '/admin'
     })
     .state('cart', {
       templateUrl: '/views/cart.html',
@@ -83,6 +83,22 @@ angular.module("rrs").controller("accountCtrl", ["$scope", function($scope) {
 
 // INITILIZE CONTROLLER
 // ============================================================
+angular.module("rrs").controller("adminCtrl", ["$scope", function($scope) {
+  // VARIABLES
+  // ============================================================
+  $scope.url = null;
+
+  // FUNCTIONS
+  // ============================================================
+  $scope.getImageUrl = function (event) {
+  var file = document.querySelector('input[type=file]').files[0];
+    console.log(file);
+
+  };
+}]);
+
+// INITILIZE CONTROLLER
+// ============================================================
 angular.module('rrs').controller("mainCtrl", ["$scope", function($scope) {
   // VARIABLES
   // ============================================================
@@ -110,6 +126,8 @@ angular.module('rrs')
       // link ,
     }
   })
+
+
 
 // INITILIZE SERVICE
 // ============================================================

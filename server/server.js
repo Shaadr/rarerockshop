@@ -10,7 +10,7 @@ var app = module.exports = express();
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static(__dirname+'/public'))
+app.use(express.static(__dirname+'/../public'))
 var massiveServer = massive.connectSync({
   connectionString: 'postgress://localhost/RRS'
 })
