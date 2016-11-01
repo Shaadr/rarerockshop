@@ -64,22 +64,10 @@ angular.module('rrs', ['ui.router'])
     })
     .state('account', {
       templateUrl: '/views/account.html',
-      // controller: 'accountCtrl',
+      controller: 'accountCtrl',
       url: '/account'
     })
   }])
-
-// INITILIZE CONTROLLER
-// ============================================================
-angular.module('rrs').controller("mainCtrl", ["$scope", function($scope) {
-  // VARIABLES
-  // ============================================================
-
-  $scope.test = "testCtrl";
-
-  // FUNCTIONS
-  // ============================================================
-}]);
 
 angular.module('rrs')
   .directive('footerDirective', function() {
@@ -99,3 +87,73 @@ angular.module('rrs')
     }
   })
 
+// INITILIZE CONTROLLER
+// ============================================================
+angular.module("rrs").controller("accountCtrl", ["$scope", function($scope) {
+  // VARIABLES
+  // ============================================================
+  $scope.getUsers = function() {
+      
+  }
+  // FUNCTIONS
+  // ============================================================
+}]);
+
+// INITILIZE CONTROLLER
+// ============================================================
+angular.module('rrs').controller("mainCtrl", ["$scope", function($scope) {
+  // VARIABLES
+  // ============================================================
+
+  $scope.test = "testCtrl";
+
+  // FUNCTIONS
+  // ============================================================
+}]);
+
+// INITILIZE SERVICE
+// ============================================================
+angular.module("rrs").service("mainService", ["$http", function($http) {
+  // CRUD FUNCTIONS
+  // ============================================================
+  this.getCollection = function(id) {
+    var query = "";
+    if (id) query = '?_id=' + id;
+    return $http({
+      method: 'GET',
+      url: '/collection' + query
+    }).then(function(response) {
+      if (response.data.length < 2) return response.data[0];
+      return response.data;
+    });
+  };
+  this.createCollection = function(collection) {
+    return $http({
+      method: 'POST',
+      url: '/collection',
+      data: collection
+    }).then(function(response) {
+      return response;
+    });
+  };
+  this.editCollection = function(id, collection) {
+    return $http({
+      method: 'PUT',
+      url: "/collection/" + id,
+      data: collection
+    }).then(function(response) {
+      return response;
+    });
+  };
+  this.deleteCollection = function(id) {
+    return $http({
+      method: 'DELETE',
+      url: '/collection/' + id
+    }).then(function(response) {
+      return response;
+    });
+  };
+  // OTHER FUNCTIONS
+  // ============================================================
+
+}]);

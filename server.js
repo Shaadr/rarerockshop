@@ -18,12 +18,12 @@ app.set('db', massiveServer)// MUST come after app = express()
 var db = app.get('db')
 var modelCtrl = require('./controllers/modelCtrl');
 
-app.get('/data/users', modelCtrl.read);
+app.get('/account', modelCtrl.read);
 // app.post('/model', modelCtrl.create);
 // app.put('/model/:id', modelCtrl.update);
 // app.delete('/model/:id', modelCtrl.delete);
 
-var port = 3000;
+var port = 3002;
 
 
 app.listen(port, function() {

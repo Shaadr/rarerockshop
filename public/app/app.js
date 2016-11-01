@@ -64,7 +64,7 @@ angular.module('rrs', ['ui.router'])
     })
     .state('account', {
       templateUrl: '/views/account.html',
-      // controller: 'accountCtrl',
+      controller: 'accountCtrl',
       url: '/account'
     })
   })
