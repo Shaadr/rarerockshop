@@ -51,7 +51,7 @@
   </section>
 </section>
 
-<section class="adminRightSection">
+<!-- <section class="adminRightSection">
   <h5>Drag and Drop Photos or Browse to add Photos</h5>
   <form id="form1" runat="server">
     <input type='file' id="imgInp" ng-model="url" ng-change="getImageUrl(event)"/> {{url}}
@@ -59,4 +59,24 @@
   </form>
 
 
-</section>
+</section> -->
+
+
+
+
+<input type='file' onchange='openFile(event)'><br>
+<img style="min-height: 300px; min-width: 350px; border: black 1px solid;" id='output'>
+<img style='height:300px; width:350px;' src="./img/592649 copy 2.jpg" alt="" />
+<script>
+  var openFile = function(event) {
+    var input = event.target;
+
+    var reader = new FileReader();
+    reader.onload = function(){
+      var dataURL = reader.result;
+      var output = document.getElementById('output');
+      output.src = dataURL;
+    };
+    reader.readAsDataURL(input.files[0]);
+  };
+</script>
