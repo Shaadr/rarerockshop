@@ -131,6 +131,194 @@ angular.module('rrs').service('authService', function ($http) {
 
 })
 
+// INITILIZE SERVICE
+// ============================================================
+angular.module("rrs").service("cartService", function($http) {
+  // CRUD FUNCTIONS
+  // ============================================================
+  this.getCart = function(id) {
+    var query = "";
+    if (id) query = '?_id=' + id;
+    return $http({
+      method: 'GET',
+      url: '/cart' + query
+    }).then(function(response) {
+      if (response.data.length < 2) return response.data[0];
+      return response.data;
+    });
+  };
+  this.createCart = function(cart) {
+    return $http({
+      method: 'POST',
+      url: '/cart',
+      data: cart
+    }).then(function(response) {
+      return response;
+    });
+  };
+  this.editCart = function(id, cart) {
+    return $http({
+      method: 'PUT',
+      url: "/cart/" + id,
+      data: cart
+    }).then(function(response) {
+      return response;
+    });
+  };
+  this.deleteCart = function(id) {
+    return $http({
+      method: 'DELETE',
+      url: '/cart/' + id
+    }).then(function(response) {
+      return response;
+    });
+  };
+  // OTHER FUNCTIONS
+  // ============================================================
+
+});
+
+// INITILIZE SERVICE
+// ============================================================
+angular.module("rrs").service("ProductsService", function($http) {
+  // CRUD FUNCTIONS
+  // ============================================================
+  this.getProducts = function(id) {
+    var query = "";
+    if (id) query = '?_id=' + id;
+    return $http({
+      method: 'GET',
+      url: '/products' + query
+    }).then(function(response) {
+      if (response.data.length < 2) return response.data[0];
+      return response.data;
+    });
+  };
+  this.createProducts = function(products) {
+    return $http({
+      method: 'POST',
+      url: '/products',
+      data: products
+    }).then(function(response) {
+      return response;
+    });
+  };
+  this.editProducts = function(id, products) {
+    return $http({
+      method: 'PUT',
+      url: "/products/" + id,
+      data: products
+    }).then(function(response) {
+      return response;
+    });
+  };
+  this.deleteProducts = function(id) {
+    return $http({
+      method: 'DELETE',
+      url: '/products/' + id
+    }).then(function(response) {
+      return response;
+    });
+  };
+  // OTHER FUNCTIONS
+  // ============================================================
+    
+});
+
+// INITILIZE SERVICE
+// ============================================================
+angular.module("rrs").service("shopService", function($http) {
+  // CRUD FUNCTIONS
+  // ============================================================
+  this.getShop = function(id) {
+    var query = "";
+    if (id) query = '?_id=' + id;
+    return $http({
+      method: 'GET',
+      url: '/shop' + query
+    }).then(function(response) {
+      if (response.data.length < 2) return response.data[0];
+      return response.data;
+    });
+  };
+  this.createShop = function(shop) {
+    return $http({
+      method: 'POST',
+      url: '/shop',
+      data: shop
+    }).then(function(response) {
+      return response;
+    });
+  };
+  this.editShop = function(id, shop) {
+    return $http({
+      method: 'PUT',
+      url: "/shop/" + id,
+      data: shop
+    }).then(function(response) {
+      return response;
+    });
+  };
+  this.deleteShop = function(id) {
+    return $http({
+      method: 'DELETE',
+      url: '/shop/' + id
+    }).then(function(response) {
+      return response;
+    });
+  };
+  // OTHER FUNCTIONS
+  // ============================================================
+  
+});
+
+// INITILIZE SERVICE
+// ============================================================
+angular.module("rrs").service("userService", function($http) {
+  // CRUD FUNCTIONS
+  // ============================================================
+  this.getUser = function(id) {
+    var query = "";
+    if (id) query = '?_id=' + id;
+    return $http({
+      method: 'GET',
+      url: '/user' + query
+    }).then(function(response) {
+      if (response.data.length < 2) return response.data[0];
+      return response.data;
+    });
+  };
+  this.createUser = function(user) {
+    return $http({
+      method: 'POST',
+      url: '/user',
+      data: user
+    }).then(function(response) {
+      return response;
+    });
+  };
+  this.editUser = function(id, user) {
+    return $http({
+      method: 'PUT',
+      url: "/user/" + id,
+      data: user
+    }).then(function(response) {
+      return response;
+    });
+  };
+  this.deleteUser = function(id) {
+    return $http({
+      method: 'DELETE',
+      url: '/user/' + id
+    }).then(function(response) {
+      return response;
+    });
+  };
+  // OTHER FUNCTIONS
+  // ============================================================
+  
+});
+
 angular.module('rrs')
   .directive('footerDirective', function() {
     return {
@@ -153,22 +341,22 @@ angular.module('rrs')
 
 // INITILIZE CONTROLLER
 // ============================================================
-angular.module("rrs").controller("aboutCtrl", function($scope) {
-  // VARIABLES
-  // ============================================================
-  
-  // FUNCTIONS
-  // ============================================================
-});
-
-// INITILIZE CONTROLLER
-// ============================================================
 angular.module("rrs").controller("accountCtrl", function($scope) {
   // VARIABLES
   // ============================================================
   $scope.getUsers = function() {
       
   }
+  // FUNCTIONS
+  // ============================================================
+});
+
+// INITILIZE CONTROLLER
+// ============================================================
+angular.module("rrs").controller("aboutCtrl", function($scope) {
+  // VARIABLES
+  // ============================================================
+  
   // FUNCTIONS
   // ============================================================
 });

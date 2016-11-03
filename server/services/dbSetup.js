@@ -6,5 +6,6 @@ module.exports = {
 		console.log('Initializing database');
 
 		db.user_table_initalize(function(err, table) {});
+		db.product_table_initialize(function (err, table) {});
 	}
 };

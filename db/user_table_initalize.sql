@@ -5,6 +5,6 @@ CREATE TABLE IF NOT EXISTS Users (
   email varchar(40) UNIQUE,
   password varchar(50),
   dateCreated varchar(10),
-  phone varchar(10)
+  phone varchar(10),
   isAdmin boolean,
 );
