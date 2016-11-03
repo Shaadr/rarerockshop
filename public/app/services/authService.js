@@ -19,11 +19,11 @@ angular.module('rrs').service('authService', function ($http) {
     });
   };
 
-  this.getCurrentUser = function () {
+  this.getCurrentUser = function() {
     return $http({
-      method: 'get',
+      method: 'GET',
       url: '/me'
-    }).then function (response) {
+    }).then(function(response) {
       return response;
     });
   };
@@ -32,7 +32,7 @@ angular.module('rrs').service('authService', function ($http) {
     return $http({
       method: 'post',
       url: '/register',
-      data: user;
+      data: user
     }).then(function (response) {
       return response;
     });

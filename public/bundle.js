@@ -67,16 +67,16 @@ angular.module('rrs', ['ui.router'])
       controller: 'accountCtrl',
       url: '/account',
       resolve: {
-        user: function (authService, $state) {
+        user: function(authService, $state) {
           return authService.getCurrentUser()
-          .then(function (response) {
-            if (!responsee.data) {
+            .then(function(response) {
+              if (!response.data)
+                $state.go('login');
+              return response.data;
+            })
+            .catch(function(err) {
               $state.go('login');
-            return response.data;
-          })
-          .catch(function(err) {
-            $state.go('login');
-          });
+            });
         }
       }
     });
@@ -106,11 +106,11 @@ angular.module('rrs').service('authService', function ($http) {
     });
   };
 
-  this.getCurrentUser = function () {
+  this.getCurrentUser = function() {
     return $http({
-      method: 'get',
+      method: 'GET',
       url: '/me'
-    }).then function (response) {
+    }).then(function(response) {
       return response;
     });
   };
@@ -119,7 +119,7 @@ angular.module('rrs').service('authService', function ($http) {
     return $http({
       method: 'post',
       url: '/register',
-      data: user;
+      data: user
     }).then(function (response) {
       return response;
     });
@@ -135,7 +135,7 @@ angular.module('rrs')
   .directive('footerDirective', function() {
     return {
       restrict: 'EA',
-      templateUrl: './footerTmpl.html',
+      templateUrl: './app/directives/footer/footerTmpl.html',
       // link ,
     }
   })
@@ -144,7 +144,7 @@ angular.module('rrs')
   .directive('headerDirective', function() {
     return {
       restrict: 'EA',
-      templateUrl: './headerTmpl.html',
+      templateUrl: './app/directives/header/headerTmpl.html',
       // link ,
     }
   })

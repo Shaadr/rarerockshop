@@ -2,7 +2,7 @@ angular.module('rrs')
   .directive('headerDirective', function() {
     return {
       restrict: 'EA',
-      templateUrl: './headerTmpl.html',
+      templateUrl: './app/directives/header/headerTmpl.html',
       // link ,
     }
   })

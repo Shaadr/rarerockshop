@@ -67,16 +67,16 @@ angular.module('rrs', ['ui.router'])
       controller: 'accountCtrl',
       url: '/account',
       resolve: {
-        user: function (authService, $state) {
+        user: function(authService, $state) {
           return authService.getCurrentUser()
-          .then(function (response) {
-            if (!responsee.data) {
+            .then(function(response) {
+              if (!response.data)
+                $state.go('login');
+              return response.data;
+            })
+            .catch(function(err) {
               $state.go('login');
-            return response.data;
-          })
-          .catch(function(err) {
-            $state.go('login');
-          });
+            });
         }
       }
     });
