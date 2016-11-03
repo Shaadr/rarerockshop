@@ -1,10 +1,8 @@
 // INITILIZE CONTROLLER
 // ============================================================
-angular.module('rrs').controller("mainCtrl", function($scope) {
+angular.module("rrs").controller("collectionCtrl", function($scope) {
   // VARIABLES
   // ============================================================
-
-  $scope.test = "testCtrl";
 
   // FUNCTIONS
   // ============================================================

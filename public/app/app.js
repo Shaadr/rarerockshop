@@ -8,63 +8,79 @@ angular.module('rrs', ['ui.router'])
 
   $stateProvider
     .state('home', {
-      templateUrl: '/views/home.html',
+      templateUrl: './app/views/home/home.html',
       // controller: 'homeCtrl',
       url: '/'
     })
     .state('about', {
-      templateUrl: '/views/about.html',
+      templateUrl: './app/views/about/about.html',
       // controller: 'aboutCtrl',
       url: '/about'
     })
     .state('admin', {
-      templateUrl: '/views/admin.html',
+      templateUrl: './app/views/admin/admin.html',
       controller: 'adminCtrl',
       url: '/admin'
     })
     .state('cart', {
-      templateUrl: '/views/cart.html',
+      templateUrl: './app/views/cart/cart.html',
       // controller: 'cartCtrl',
       url: '/cart'
     })
     .state('collection', {
-      templateUrl: '/views/collection.html',
+      templateUrl: './app/views/collection/collection.html',
       // controller: 'collectionCtrl',
       url: '/collection'
     })
     .state('contact', {
-      templateUrl: '/views/contact.html',
+      templateUrl: './app/views/contact/contact.html',
       // controller: 'contactCtrl',
       url: '/contact/'
     })
     .state('lapidary', {
-      templateUrl: '/views/lapidary.html',
+      templateUrl: './app/views/lapidary/lapidary.html',
       // controller: 'lapidaryCtrl',
       url: '/lapidary'
     })
     .state('login', {
-      templateUrl: '/views/login.html',
+      templateUrl: './app/views/login/login.html',
       // controller: 'loginCtrl',
       url: '/login'
     })
     .state('orderSuccess', {
-      templateUrl: '/views/orderSuccess.html',
+      templateUrl: './app/views/orderSuccess/orderSuccess.html',
       // controller: 'orderSuccessCtrl',
       url: '/ordersuccess'
     })
     .state('product', {
-      templateUrl: '/views/product.html',
+      templateUrl: './app/views/product/product.html',
       // controller: 'productCtrl',
       url: '/product'
     })
     .state('shop', {
-      templateUrl: '/views/shop.html',
+      templateUrl: './app/views/shop/shop.html',
       // controller: 'shopCtrl',
       url: '/shop'
     })
     .state('account', {
-      templateUrl: '/views/account.html',
+      templateUrl: './app/views/account/account.html',
       controller: 'accountCtrl',
-      url: '/account'
-    })
+      url: '/account',
+      resolve: {
+        user: function (authService, $state) {
+          return authService.getCurrentUser()
+          .then(function (response) {
+            if (!responsee.data) {
+              $state.go('login');
+            return response.data;
+          })
+          .catch(function(err) {
+            $state.go('login');
+          });
+        }
+      }
+    });
+
+
+
   })

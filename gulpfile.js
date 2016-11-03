@@ -27,14 +27,14 @@ gulp.task('js', function() {
   return gulp.src(paths.jsSource)
   //.pipe(babel()) //Uncomment if using ES6
   .pipe(concat('bundle.js'))
-  .pipe(annotate())
+  // .pipe(annotate())
   //.pipe(uglify()) //Uncomment when code is production ready
   .pipe(gulp.dest('./public'));
 });
 gulp.task('sass', function () {
   return gulp.src(paths.sassSource)
     .pipe(sass())
-    .pipe(concat('style.css'))
+    .pipe(concat('bundle.css'))
     .pipe(gulp.dest('./public'));
 });
 

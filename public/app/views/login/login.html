@@ -1,24 +1,22 @@
 <div class="loginForm">
-  <form>
-    User name:<br>
-    <input type="text" name="username"><br>
-    Password:<br>
-    <input type="password" name="psw">
-
-    <input type="button" name="name" value="Login">
-  </form>
+  <form ng-submit="login(user)">
+  Email: <input type="email" ng-model="user.email" required/>
+  Password: <input type="password" ng-model="user.password" required/>
+  <button type="submit">login</button>
+</form>
 </div>
+
 
 <div class="newUserForm">
   <h3>Dont have an Account?</h3>
   <h5>Create your account below!</h5>
-  <form>
-    <input type="text" name="name" value="" placeholder="First Name" />
-    <input type="text" name="name" value="" placeholder="Last Name" />
-    <input type="text" name="name" value="" placeholder="Email" />
-    <input type="text" name="name" value="" placeholder="Confirm Email" />
-    <input type="text" name="name" value="" placeholder="Address" />
-    <input type="text" name="name" value="" placeholder="City" />
+  <form ng-submit="register(newUser)">
+    <input type="text" placeholder="First Name" required />
+    <input type="text" placeholder="Last Name" required/>
+    <input type="email" ng-model="newUser.email" placeholder="Email" required/>
+    <!-- <input type="text" placeholder="Confirm Email" required/> -->
+    <input type="text" placeholder="Address" />
+    <input type="text" placeholder="City" />
     <div class="form-group">
   	<div class="col-sm-10">
   		<select class="form-control" id="state" name="state"  style="width: auto;">
@@ -78,11 +76,11 @@
   		</select>
   	</div>
   </div>
-  <input type="text" name="name" value="" placeholder="Zip" />
+  <input type="text" placeholder="Zip" />
   <br>
-  <input type="text" name="name" value="" placeholder="User Name" />
-  <input type="text" name="name" value="" placeholder="Password" />
-  <input type="text" name="name" value="" placeholder="Confirm Password" />
-  <button type="button" name="button">Submit</button>
+  <input type="text" ng-model="newUser.userName" placeholder="User Name" required/>
+  <input type="password" ng-model="newUser.password" placeholder="Password" />
+  <!-- <input type="text" name="name" value="" placeholder="Confirm Password" /> -->
+  <button type="submit">Submit</button>
   </form>
 </div>

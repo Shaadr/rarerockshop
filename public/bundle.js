@@ -1,77 +1,169 @@
 // INITILIZE APP
 // ============================================================
 angular.module('rrs', ['ui.router'])
-.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider.otherwise('/');
 
 
   $stateProvider
     .state('home', {
-      templateUrl: '/views/home.html',
+      templateUrl: './app/views/home/home.html',
       // controller: 'homeCtrl',
       url: '/'
     })
     .state('about', {
-      templateUrl: '/views/about.html',
+      templateUrl: './app/views/about/about.html',
       // controller: 'aboutCtrl',
       url: '/about'
     })
     .state('admin', {
-      templateUrl: '/views/admin.html',
+      templateUrl: './app/views/admin/admin.html',
       controller: 'adminCtrl',
       url: '/admin'
     })
     .state('cart', {
-      templateUrl: '/views/cart.html',
+      templateUrl: './app/views/cart/cart.html',
       // controller: 'cartCtrl',
       url: '/cart'
     })
     .state('collection', {
-      templateUrl: '/views/collection.html',
+      templateUrl: './app/views/collection/collection.html',
       // controller: 'collectionCtrl',
       url: '/collection'
     })
     .state('contact', {
-      templateUrl: '/views/contact.html',
+      templateUrl: './app/views/contact/contact.html',
       // controller: 'contactCtrl',
       url: '/contact/'
     })
     .state('lapidary', {
-      templateUrl: '/views/lapidary.html',
+      templateUrl: './app/views/lapidary/lapidary.html',
       // controller: 'lapidaryCtrl',
       url: '/lapidary'
     })
     .state('login', {
-      templateUrl: '/views/login.html',
+      templateUrl: './app/views/login/login.html',
       // controller: 'loginCtrl',
       url: '/login'
     })
     .state('orderSuccess', {
-      templateUrl: '/views/orderSuccess.html',
+      templateUrl: './app/views/orderSuccess/orderSuccess.html',
       // controller: 'orderSuccessCtrl',
       url: '/ordersuccess'
     })
     .state('product', {
-      templateUrl: '/views/product.html',
+      templateUrl: './app/views/product/product.html',
       // controller: 'productCtrl',
       url: '/product'
     })
     .state('shop', {
-      templateUrl: '/views/shop.html',
+      templateUrl: './app/views/shop/shop.html',
       // controller: 'shopCtrl',
       url: '/shop'
     })
     .state('account', {
-      templateUrl: '/views/account.html',
+      templateUrl: './app/views/account/account.html',
       controller: 'accountCtrl',
-      url: '/account'
-    })
-  }])
+      url: '/account',
+      resolve: {
+        user: function (authService, $state) {
+          return authService.getCurrentUser()
+          .then(function (response) {
+            if (!responsee.data) {
+              $state.go('login');
+            return response.data;
+          })
+          .catch(function(err) {
+            $state.go('login');
+          });
+        }
+      }
+    });
+
+
+
+  })
+
+angular.module('rrs').service('authService', function ($http) {
+
+  this.login = function (user) {
+    return $http({
+      method:'post',
+      url:'/login',
+      data: user
+    }).then(function (response) {
+      return response;
+    });
+  };
+
+  this.logout = function () {
+    return $http({
+      method: 'get',
+      url: '/logout',
+    }).then(function (response) {
+      return response;
+    });
+  };
+
+  this.getCurrentUser = function () {
+    return $http({
+      method: 'get',
+      url: '/me'
+    }).then function (response) {
+      return response;
+    });
+  };
+
+  this.registerUser = function (user) {
+    return $http({
+      method: 'post',
+      url: '/register',
+      data: user;
+    }).then(function (response) {
+      return response;
+    });
+  };
+
+  this.editUser = function () {
+
+  }
+
+})
+
+angular.module('rrs')
+  .directive('footerDirective', function() {
+    return {
+      restrict: 'EA',
+      templateUrl: './footerTmpl.html',
+      // link ,
+    }
+  })
+
+angular.module('rrs')
+  .directive('headerDirective', function() {
+    return {
+      restrict: 'EA',
+      templateUrl: './headerTmpl.html',
+      // link ,
+    }
+  })
+
+
 
 // INITILIZE CONTROLLER
 // ============================================================
-angular.module("rrs").controller("accountCtrl", ["$scope", function($scope) {
+angular.module("rrs").controller("aboutCtrl", function($scope) {
+  // VARIABLES
+  // ============================================================
+  
+  // FUNCTIONS
+  // ============================================================
+});
+
+// INITILIZE CONTROLLER
+// ============================================================
+angular.module("rrs").controller("accountCtrl", function($scope) {
   // VARIABLES
   // ============================================================
   $scope.getUsers = function() {
@@ -79,11 +171,11 @@ angular.module("rrs").controller("accountCtrl", ["$scope", function($scope) {
   }
   // FUNCTIONS
   // ============================================================
-}]);
+});
 
 // INITILIZE CONTROLLER
 // ============================================================
-angular.module("rrs").controller("adminCtrl", ["$scope", function($scope) {
+angular.module("rrs").controller("adminCtrl", function($scope) {
   // VARIABLES
   // ============================================================
   $scope.url = null;
@@ -95,83 +187,91 @@ angular.module("rrs").controller("adminCtrl", ["$scope", function($scope) {
     console.log(file);
 
   };
-}]);
+});
 
 // INITILIZE CONTROLLER
 // ============================================================
-angular.module('rrs').controller("mainCtrl", ["$scope", function($scope) {
+angular.module("rrs").controller("cartCtrl", function($scope) {
   // VARIABLES
   // ============================================================
 
-  $scope.test = "testCtrl";
+  // FUNCTIONS
+  // ============================================================
+});
+
+// INITILIZE CONTROLLER
+// ============================================================
+angular.module("rrs").controller("collectionCtrl", function($scope) {
+  // VARIABLES
+  // ============================================================
 
   // FUNCTIONS
   // ============================================================
-}]);
+});
 
-angular.module('rrs')
-  .directive('footerDirective', function() {
-    return {
-      restrict: 'EA',
-      templateUrl: './views/templates/footerTmpl.html',
-      // link ,
-    }
-  })
-
-angular.module('rrs')
-  .directive('headerDirective', function() {
-    return {
-      restrict: 'EA',
-      templateUrl: './views/templates/headerTmpl.html',
-      // link ,
-    }
-  })
-
-
-
-// INITILIZE SERVICE
+// INITILIZE CONTROLLER
 // ============================================================
-angular.module("rrs").service("mainService", ["$http", function($http) {
-  // CRUD FUNCTIONS
-  // ============================================================
-  this.getCollection = function(id) {
-    var query = "";
-    if (id) query = '?_id=' + id;
-    return $http({
-      method: 'GET',
-      url: '/collection' + query
-    }).then(function(response) {
-      if (response.data.length < 2) return response.data[0];
-      return response.data;
-    });
-  };
-  this.createCollection = function(collection) {
-    return $http({
-      method: 'POST',
-      url: '/collection',
-      data: collection
-    }).then(function(response) {
-      return response;
-    });
-  };
-  this.editCollection = function(id, collection) {
-    return $http({
-      method: 'PUT',
-      url: "/collection/" + id,
-      data: collection
-    }).then(function(response) {
-      return response;
-    });
-  };
-  this.deleteCollection = function(id) {
-    return $http({
-      method: 'DELETE',
-      url: '/collection/' + id
-    }).then(function(response) {
-      return response;
-    });
-  };
-  // OTHER FUNCTIONS
+angular.module("rrs").controller("contactCtrl", function($scope) {
+  // VARIABLES
   // ============================================================
 
-}]);
+  // FUNCTIONS
+  // ============================================================
+});
+
+// INITILIZE CONTROLLER
+// ============================================================
+angular.module("rrs").controller("homeCtrl", function($scope) {
+  // VARIABLES
+  // ============================================================
+
+  // FUNCTIONS
+  // ============================================================
+});
+
+// INITILIZE CONTROLLER
+// ============================================================
+angular.module("rrs").controller("lapidaryCtrl", function($scope) {
+  // VARIABLES
+  // ============================================================
+
+  // FUNCTIONS
+  // ============================================================
+});
+
+// INITILIZE CONTROLLER
+// ============================================================
+angular.module("rrs").controller("loginCtrl", function($scope, authService, $state) {
+  // VARIABLES
+  // ============================================================
+
+  // FUNCTIONS
+  // ============================================================
+
+    $scope.login = function (user) {
+      authService.login(user).then(function (response) {
+        if(!response.data) {
+          alert('User does not exist');
+          $scope.user.password = '';
+        } else {
+          $state.go('account');
+        }
+      }).catch(function (err) {
+        alert('Unable to login');
+      });
+    };
+
+    $scope.register = function (user) {
+      authService.registerUser(user).then(function (response) {
+        if(!response.data) {
+          alert('Unable to create user');
+        } else {
+          alert('User Created!');
+          $scope.newUser = {};
+        }
+      }).cath(function (err) {
+        alert('Unable to create User')
+      });
+    };
+
+});
