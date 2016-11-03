@@ -14,7 +14,7 @@ var app = module.exports = express();
 
 
 app.use(cors());
-app.use(express.static(__dirname+'./../public'))
+app.use(express.static(__dirname+'./../public'));
 app.use(bodyParser.json());
 
 //massive
@@ -71,6 +71,24 @@ app.get('/logout', function (req,res,next) {
   req.logout();
   return res.status(200)
   .send('logged out');
+});
+
+app.get('/api/inventory', function (req, res) {
+  db.run("select * from products", function (err, response) {
+    if (err) {
+      res.send("Error: ", err);
+    }
+    res.send(response);
+  });
+});
+
+app.get('/api/inventory/:id', function (req, res) {
+  db.products.findOne({id: req.params.id}, function (err, response) {
+    if (err) {
+      res.send("Error: ", err);
+    }
+    res.send(response);
+  });
 });
 
 app.post('/register', userCtrl.register);

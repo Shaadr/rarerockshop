@@ -1,46 +1,19 @@
 // INITILIZE SERVICE
 // ============================================================
 angular.module("rrs").service("shopService", function($http) {
-  // CRUD FUNCTIONS
-  // ============================================================
-  this.getShop = function(id) {
-    var query = "";
-    if (id) query = '?_id=' + id;
+
+  this.getInventory = function() {
     return $http({
       method: 'GET',
-      url: '/shop' + query
-    }).then(function(response) {
-      if (response.data.length < 2) return response.data[0];
-      return response.data;
+      url: '/api/inventory'
     });
   };
-  this.createShop = function(shop) {
+
+  this.getInventoryById = function(id) {
     return $http({
-      method: 'POST',
-      url: '/shop',
-      data: shop
-    }).then(function(response) {
-      return response;
+      method: 'GET',
+      url: '/api/inventory/' + id
     });
   };
-  this.editShop = function(id, shop) {
-    return $http({
-      method: 'PUT',
-      url: "/shop/" + id,
-      data: shop
-    }).then(function(response) {
-      return response;
-    });
-  };
-  this.deleteShop = function(id) {
-    return $http({
-      method: 'DELETE',
-      url: '/shop/' + id
-    }).then(function(response) {
-      return response;
-    });
-  };
-  // OTHER FUNCTIONS
-  // ============================================================
-  
+
 });

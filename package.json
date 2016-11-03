@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Shaadr/learn-git#readme",
   "dependencies": {
+    "angular-filter": "^0.5.11",
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.2",
     "cors": "^2.8.1",
