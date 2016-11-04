@@ -80,7 +80,7 @@ angular.module('rrs', ['ui.router', 'angular.filter'])
     .state('account', {
       templateUrl: './app/views/account/account.html',
       controller: 'accountCtrl',
-      url: '/account',
+      url: '/account/:id',
       resolve: {
         user: function(authService, $state) {
           return authService.getCurrentUser()

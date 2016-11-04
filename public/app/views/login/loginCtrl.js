@@ -13,7 +13,8 @@ angular.module("rrs").controller("loginCtrl", function($scope, authService, $sta
           alert('User does not exist');
           $scope.user.password = '';
         } else {
-          $state.go('account');
+          console.log(response.data.id);
+          $state.go('account', {id: response.data.id});
         }
       }).catch(function (err) {
         alert('Unable to login');
@@ -28,7 +29,7 @@ angular.module("rrs").controller("loginCtrl", function($scope, authService, $sta
           alert('User Created!');
           $scope.newUser = {};
         }
-      }).cath(function (err) {
+      }).catch(function (err) {
         alert('Unable to create User')
       });
     };

@@ -2,10 +2,12 @@
   <h1>Your Account</h1>
 </div>
 
+{{user}}
+
 <section class="mainAccountContainer">
   <div class="accountInfo">
     <h1>Account Information</h1>
-    <h5>Username: username</h5>
+    <h5>Username: {{user.username}}</h5>
     <h5>Password: *****</h5>
     <button type="button" name="button">Change Username</button>
     <button type="button" name="button">Change Password</button>

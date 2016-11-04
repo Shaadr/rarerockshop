@@ -38,6 +38,7 @@ var passport = require('./services/passport');
 // POLICIES //
 var isAuthed = function(req, res, next) {
 	if (!req.isAuthenticated()) {
+    console.log('not authed');
     return res.sendStatus(401);
   }
   else {
@@ -92,8 +93,11 @@ app.get('/api/inventory/:id', function (req, res) {
 });
 
 app.post('/register', userCtrl.register);
+app.post('/account', userCtrl.createUser)
 app.get('/user', userCtrl.read);
-app.get('/me', /*isAuthed,*/ userCtrl.me);
+app.get('/me', isAuthed, userCtrl.me);
+app.get('/account', isAuthed, userCtrl.read)
+
 
 // app.put('/model/:id', modelCtrl.update);
 // app.delete('/model/:id', modelCtrl.delete);

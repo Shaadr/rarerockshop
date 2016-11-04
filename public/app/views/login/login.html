@@ -11,8 +11,8 @@
   <h3>Dont have an Account?</h3>
   <h5>Create your account below!</h5>
   <form ng-submit="register(newUser)">
-    <input type="text" placeholder="First Name" required />
-    <input type="text" placeholder="Last Name" required/>
+    <input type="text" ng-model='newUser.firstname' placeholder="First Name" required />
+    <input type="text" ng-model='newUser.lastname' placeholder="Last Name" required/>
     <input type="email" ng-model="newUser.email" placeholder="Email" required/>
     <!-- <input type="text" placeholder="Confirm Email" required/> -->
     <input type="text" placeholder="Address" />
@@ -78,7 +78,7 @@
   </div>
   <input type="text" placeholder="Zip" />
   <br>
-  <input type="text" ng-model="newUser.userName" placeholder="User Name" required/>
+  <input type="text" ng-model="newUser.username" placeholder="User Name" required/>
   <input type="password" ng-model="newUser.password" placeholder="Password" />
   <!-- <input type="text" name="name" value="" placeholder="Confirm Password" /> -->
   <button type="submit">Submit</button>

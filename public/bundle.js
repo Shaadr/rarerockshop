@@ -80,7 +80,7 @@ angular.module('rrs', ['ui.router', 'angular.filter'])
     .state('account', {
       templateUrl: './app/views/account/account.html',
       controller: 'accountCtrl',
-      url: '/account',
+      url: '/account/:id',
       resolve: {
         user: function(authService, $state) {
           return authService.getCurrentUser()
@@ -151,6 +151,7 @@ angular.module('rrs').service('authService', function ($http) {
       url: '/register',
       data: user
     }).then(function (response) {
+      console.log(response);
       return response;
     });
   };
@@ -323,19 +324,19 @@ angular.module("rrs").service("userService", function($http) {
 });
 
 angular.module('rrs')
-  .directive('headerDirective', function() {
+  .directive('footerDirective', function() {
     return {
       restrict: 'EA',
-      templateUrl: './app/directives/header/headerTmpl.html',
+      templateUrl: './app/directives/footer/footerTmpl.html',
       // link ,
     }
   })
 
 angular.module('rrs')
-  .directive('footerDirective', function() {
+  .directive('headerDirective', function() {
     return {
       restrict: 'EA',
-      templateUrl: './app/directives/footer/footerTmpl.html',
+      templateUrl: './app/directives/header/headerTmpl.html',
       // link ,
     }
   })
@@ -354,22 +355,17 @@ angular.module("rrs").controller("aboutCtrl", function($scope) {
 
 // INITILIZE CONTROLLER
 // ============================================================
-angular.module("rrs").controller("accountCtrl", function($scope) {
+angular.module("rrs").controller("accountCtrl", function($scope, user) {
   // VARIABLES
   // ============================================================
+
+  $scope.user = user
+  console.log($scope.user);
+
+
   $scope.getUsers = function() {
-      
+
   }
-  // FUNCTIONS
-  // ============================================================
-});
-
-// INITILIZE CONTROLLER
-// ============================================================
-angular.module("rrs").controller("cartCtrl", function($scope) {
-  // VARIABLES
-  // ============================================================
-
   // FUNCTIONS
   // ============================================================
 });
@@ -388,6 +384,16 @@ angular.module("rrs").controller("adminCtrl", function($scope) {
     console.log(file);
 
   };
+});
+
+// INITILIZE CONTROLLER
+// ============================================================
+angular.module("rrs").controller("cartCtrl", function($scope) {
+  // VARIABLES
+  // ============================================================
+
+  // FUNCTIONS
+  // ============================================================
 });
 
 // INITILIZE CONTROLLER
@@ -445,7 +451,8 @@ angular.module("rrs").controller("loginCtrl", function($scope, authService, $sta
           alert('User does not exist');
           $scope.user.password = '';
         } else {
-          $state.go('account');
+          console.log(response.data.id);
+          $state.go('account', {id: response.data.id});
         }
       }).catch(function (err) {
         alert('Unable to login');
@@ -460,7 +467,7 @@ angular.module("rrs").controller("loginCtrl", function($scope, authService, $sta
           alert('User Created!');
           $scope.newUser = {};
         }
-      }).cath(function (err) {
+      }).catch(function (err) {
         alert('Unable to create User')
       });
     };

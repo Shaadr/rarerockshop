@@ -1,10 +1,11 @@
-CREATE TABLE IF NOT EXISTS Users (
+CREATE TABLE IF NOT EXISTS users (
   id SERIAL PRIMARY KEY,
-  name varchar(40),
-  userName varchar(25) UNIQUE,
-  email varchar(40) UNIQUE,
-  password varchar(50),
-  dateCreated varchar(10),
+  firstname varchar(40),
+  lastname varchar(40),
+  username varchar(40) UNIQUE,
+  email varchar(240) UNIQUE,
+  password varchar(240),
+  datecreated varchar(240),
   phone varchar(10),
-  isAdmin boolean,
+  isadmin boolean
 );

@@ -14,7 +14,13 @@ function hashPassword(password) {
 }
 
 module.exports = {
+	createUser: function (req, res, next) {
+		console.log(req.body);
+		db.user_create([req.body.firstname, req.body.lastname, req.body.username, req.body.email, req.body.password, req.body.datecreated, req.body.phone, req.body.isadmin], function(err, user) {
+			res.send(200).json(user)
+		})
 
+	},
 	// REGISTER USER //
 	register: function(req, res, next) {
 		var user = req.body;
@@ -22,12 +28,24 @@ module.exports = {
 		// Hash the users password for security
 		user.password = hashPassword(user.password);
 
+		//normalize email
 		user.email = user.email.toLowerCase();
 
-		db.user_create([user.name, user.email, user.password], function(err, user) {
+		//get Date & time user was created
+		user.datecreated = new Date().toLocaleString();
+
+		user.isadmin = false;
+
+		db.user_create([user.firstname, user.lastname, user.username, user.email, user.password, user.datecreated, user.phone, user.isadmin], function(err, user) {
+
 			// If err, send err
-			if (err) return res.status(500)
-				.send(err);
+			if (err){
+				console.log(err);
+				return res.status(500).send(err)
+			}
+
+
+
 
 			// Send user back without password.
 			delete user.password;
@@ -54,10 +72,10 @@ module.exports = {
 		// If user isnt on the session, then return error status
 		if (!req.user) return res.status(401)
 			.send('current user not defined');
+			console.log(req.user);
 
 		// Remove password for security
 		var user = req.user[0];
-		console.log(user);
 
 		delete user.password;
 
