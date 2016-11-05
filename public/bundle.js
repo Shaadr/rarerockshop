@@ -30,7 +30,14 @@ angular.module('rrs', ['ui.router', 'angular.filter'])
     .state('collection', {
       templateUrl: './app/views/collection/collection.html',
       controller: 'collectionCtrl',
-      url: '/collection'
+      url: '/collection',
+      resolve: {
+        products: function (shopService) {
+          return shopService.getInventory().then(function(response) {
+            return response.data;
+          });
+        }
+      }
     })
     .state('contact', {
       templateUrl: './app/views/contact/contact.html',
@@ -206,6 +213,27 @@ angular.module("rrs").service("cartService", function($http) {
   };
   // OTHER FUNCTIONS
   // ============================================================
+
+});
+
+// INITILIZE SERVICE
+// ============================================================
+angular.module("rrs").service("collectionService", function($http) {
+  // CRUD FUNCTIONS
+  // ============================================================
+  this.getInventory = function () {
+    return $http({
+      method: "GET",
+      url: '/api/inventory'
+    });
+  };
+
+  this.getInventoryById = function () {
+    return $http({
+      method: "GET",
+      url: '/api/inventory/' + id
+    });
+  };
 
 });
 
@@ -398,10 +426,10 @@ angular.module("rrs").controller("cartCtrl", function($scope) {
 
 // INITILIZE CONTROLLER
 // ============================================================
-angular.module("rrs").controller("collectionCtrl", function($scope) {
+angular.module("rrs").controller("collectionCtrl", function($scope, products) {
   // VARIABLES
   // ============================================================
-
+$scope.products = products;
   // FUNCTIONS
   // ============================================================
 });

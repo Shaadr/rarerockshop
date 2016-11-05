@@ -30,7 +30,14 @@ angular.module('rrs', ['ui.router', 'angular.filter'])
     .state('collection', {
       templateUrl: './app/views/collection/collection.html',
       controller: 'collectionCtrl',
-      url: '/collection'
+      url: '/collection',
+      resolve: {
+        products: function (shopService) {
+          return shopService.getInventory().then(function(response) {
+            return response.data;
+          });
+        }
+      }
     })
     .state('contact', {
       templateUrl: './app/views/contact/contact.html',
