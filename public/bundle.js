@@ -321,13 +321,13 @@ angular.module('rrs').directive('footerDirective', function () {
     templateUrl: './app/directives/footer/footerTmpl.html'
   };
 });
-
 angular.module('rrs').directive('headerDirective', function () {
   return {
     restrict: 'EA',
     templateUrl: './app/directives/header/headerTmpl.html'
   };
 });
+
 // INITILIZE CONTROLLER
 // ============================================================
 angular.module("rrs").controller("aboutCtrl", ["$scope", function ($scope) {

@@ -1,4 +1,44 @@
 @import url("https://fonts.googleapis.com/css?family=Bangers|Bungee+Inline|Fontdiner+Swanky|Indie+Flower|Kalam:700|Prosto+One|Tillana:600");
+.mainAboutContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 50px; }
+  .mainAboutContainer h1 {
+    font-family: 'Indie Flower';
+    font-size: 50px; }
+
+.aboutRowContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 25px; }
+  @media screen and (max-width: 850px) {
+    .aboutRowContainer {
+      flex-direction: column; } }
+
+.aboutText {
+  letter-spacing: 1px;
+  font-family: 'Indie Flower';
+  font-weight: bolder;
+  padding: 20px;
+  border-radius: 30px;
+  background-color: #F4F4F4;
+  margin: 10px;
+  max-height: 400px; }
+
+.atext {
+  text-align: justify;
+  font-size: 20px;
+  color: #C0B283; }
+
+.aboutImage {
+  height: 350px;
+  width: 500px;
+  margin: 10px; }
+
+@import url("https://fonts.googleapis.com/css?family=Bangers|Bungee+Inline|Fontdiner+Swanky|Indie+Flower|Kalam:700|Prosto+One|Tillana:600");
 body {
   background-color: #DDD1C1; }
 
@@ -13,12 +53,12 @@ body {
   background-size: cover;
   width: 100%;
   height: 60vh;
-  margin-top: 52px; }
+  margin-top: 67px; }
   .topHeader h1 {
     color: #C0B283;
     text-align: center;
     font-size: 80px;
-    font-family: 'Kalam', cursive;
+    font-family: 'Indie Flower', cursive;
     background: #383838;
     border-radius: 20px;
     opacity: .85;
@@ -35,7 +75,7 @@ body {
     flex-direction: row;
     align-items: center;
     padding: 15px; }
-    @media screen and (max-width: 780px) {
+    @media screen and (max-width: 900px) {
       .mainHomeContainer .homeRowContainer {
         flex-direction: column; } }
     .mainHomeContainer .homeRowContainer .homeImageContainer {
@@ -82,3 +122,51 @@ body {
   .aboutContainer .aboutImageContainer {
     height: 500px;
     width: 600px; }
+
+@import url("https://fonts.googleapis.com/css?family=Bangers|Bungee+Inline|Fontdiner+Swanky|Indie+Flower|Kalam:700|Prosto+One|Tillana:600");
+.shopTitleWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px; }
+  .shopTitleWrapper .shopTitleContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 60vh;
+    margin-top: 52px; }
+    .shopTitleWrapper .shopTitleContainer h1 {
+      font-size: 80px;
+      font-family: 'Indie Flower'; }
+
+.storeSearchBar {
+  width: 40vw;
+  margin: auto;
+  margin-top: 15px;
+  font-family: 'Indie Flower';
+  color: #C0B283; }
+
+.shopSort {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 15px 0 15px 0;
+  font-family: 'Indie Flower';
+  color: #373737; }
+
+.row {
+  margin: auto; }
+
+.shopProductContainer {
+  height: 350px;
+  background-color: #F4F4F4; }
+
+.shopImg {
+  max-height: 200px;
+  max-width: 300px;
+  padding-top: 10px; }
+
+.shopCaption {
+  color: #C0B283;
+  font-family: 'Indie Flower'; }
