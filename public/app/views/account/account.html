@@ -1,43 +1,44 @@
-<div>
-  <h1>Your Account</h1>
-</div>
-
-{{user}}
-
-<section class="mainAccountContainer">
-  <div class="accountInfo">
-    <h1>Account Information</h1>
-    <h5> Welcome {{user.firstname}} {{user.lastname}}!</h5>
-    <h5>Username: {{user.username}}</h5>
-    <h5>Password: *****</h5>
-    <button type="button" name="button">Change Username</button>
-    <button type="button" name="button">Change Password</button>
+<div class="mainTitleWrapper">
+  <div class="mainTitleContainer" style="background-image:none; height:15vh;">
+    <h1>Your Account</h1>
+    <!-- <img ui-sref="home" class="logo" src="http://caspianpetrotech.com/wp-content/uploads/2015/10/logo-placeholder.png" alt="" /> -->
   </div>
-
-  <div class="Orders">
-    <div class="singleOrder">
-      <h1>Orders</h1>
-      <h5>Order Number: ordernumber</h5>
-      <h5>Price: price</h5>
-      <h5>OrderPlaced: dateplaced</h5>
-      <a href="https://www.ups.com/WebTracking/track">Tracking: number</a>
+</div>
+  <section class="mainAccountContainer">
+    <div class="accountInfo">
+      <h1>Account Information</h1>
+      <h5> Welcome {{user.firstname}} {{user.lastname}}!</h5>
+      <h5>Username: {{user.username}}</h5>
+      <h5>Password: *****</h5>
+      <button type="button" name="button">Change Username</button><br>
+      <button type="button" name="button">Change Password</button>
     </div>
 
-    <!-- <div class="shipping">
-      <h1>Shipping Preferences</h1>
-      <input type="text" name="name" value="" placeholder="Ship To">
-      <input type="text" name="name" value="" placeholder="Street or PO Box">
-      <input type="text" name="name" value="" placeholder="City">
-      <input type="text" name="name" value="" placeholder="State">
-      <input type="text" name="name" value="" placeholder="Zip">
-      <button type="button" name="button">Save Changes</button>
-    </div> -->
+    <div class="Orders">
+      <h1>Orders</h1>
+      <div class="singleOrder">
+        <h5>Order Number: {{ordernumber}}</h5>
+        <h5>Price: {{price}}</h5>
+        <h5>OrderPlaced: {{dateplaced}}</h5>
+        Tracking: <a href="https://www.ups.com/WebTracking/track">{{number}}</a>
+      </div>
 
-    <!-- Billing info for future?  -->
-    <!-- <div class="billing">
-      <h1>Billing Info</h1>
+      <!-- <div class="shipping">
+        <h1>Shipping Preferences</h1>
+        <input type="text" name="name" value="" placeholder="Ship To">
+        <input type="text" name="name" value="" placeholder="Street or PO Box">
+        <input type="text" name="name" value="" placeholder="City">
+        <input type="text" name="name" value="" placeholder="State">
+        <input type="text" name="name" value="" placeholder="Zip">
+        <button type="button" name="button">Save Changes</button>
+      </div> -->
 
-    </div> -->
+      <!-- Billing info for future?  -->
+      <!-- <div class="billing">
+        <h1>Billing Info</h1>
 
-  </div>
-</section>
+      </div> -->
+
+  </section>
+
+</div>

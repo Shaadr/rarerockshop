@@ -411,6 +411,15 @@ angular.module("rrs").controller("lapidaryCtrl", ["$scope", function ($scope) {
 }]);
 // INITILIZE CONTROLLER
 // ============================================================
+angular.module("rrs").controller("orderSuccessCtrl", ["$scope", function ($scope) {
+  // VARIABLES
+  // ============================================================
+
+  // FUNCTIONS
+  // ============================================================
+}]);
+// INITILIZE CONTROLLER
+// ============================================================
 angular.module("rrs").controller("loginCtrl", ["$scope", "authService", "$state", function ($scope, authService, $state) {
   // VARIABLES
   // ============================================================
@@ -444,15 +453,6 @@ angular.module("rrs").controller("loginCtrl", ["$scope", "authService", "$state"
       alert('Unable to create User');
     });
   };
-}]);
-// INITILIZE CONTROLLER
-// ============================================================
-angular.module("rrs").controller("orderSuccessCtrl", ["$scope", function ($scope) {
-  // VARIABLES
-  // ============================================================
-
-  // FUNCTIONS
-  // ============================================================
 }]);
 // INITILIZE CONTROLLER
 // ============================================================
