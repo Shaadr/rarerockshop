@@ -30,6 +30,9 @@
   margin: 10px; }
 
 @import url("https://fonts.googleapis.com/css?family=Bangers|Bungee+Inline|Fontdiner+Swanky|Indie+Flower|Kalam:700|Prosto+One|Tillana:600");
+.collectionCaption {
+  font-family: 'Indie Flower';
+  text-align: center; }
 
 @import url("https://fonts.googleapis.com/css?family=Bangers|Bungee+Inline|Fontdiner+Swanky|Indie+Flower|Kalam:700|Prosto+One|Tillana:600");
 body {
@@ -89,6 +92,9 @@ body {
       .mainHomeContainer .homeRowContainer .homeText h1 {
         text-align: center;
         font-size: 50px; }
+        .mainHomeContainer .homeRowContainer .homeText h1:hover {
+          color: #373737;
+          cursor: pointer; }
       .mainHomeContainer .homeRowContainer .homeText p {
         text-align: justify;
         font-size: 20px; }
@@ -162,4 +168,9 @@ body {
   font-family: 'Indie Flower';
   text-align: center; }
   .shopCaption h3 {
-    color: #C0B283; }
+    color: #C0B283;
+    text-decoration: none; }
+    .shopCaption h3:hover {
+      color: #373737;
+      text-decoration: none;
+      cursor: pointer; }
