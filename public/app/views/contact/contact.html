@@ -1,14 +1,38 @@
-<div class="contactContainer">
-  <h1>Questions or Comments?</h1> <br />
-  <h3>We would Love to hear from you!</h3>
+<div class="contactMainContainer" style="background-position: center">
+  <div class="mainTitleWrapper" id='mainCollectionContainer'>
+    <div class="mainTitleContainer" style="background-image:none; margin: -52px; margin: 0 10px 0 10px">
+      <h1 style="background: none; color: white;">Questions or Comments?</h1> <br />
+      <h3 style="color:white">We would Love to hear from you!</h3>
+    </div>
+    <!-- add 'method="post"' to form? -->
+
+    <div id="form-main">
+      <div id="form-div">
+        <form class="form" id="form1">
+
+          <p class="name">
+            <input name="name" type="text" class="feedback-input" placeholder="Name" id="name" />
+          </p>
+
+          <p class="email">
+            <input name="email" type="text" class="feedback-input" id="email" placeholder="Email" />
+          </p>
+
+          <p class="email">
+            <input name="phone" type="text" class="feedback-input" id='phone' placeholder="Phone" />
+          </p>
+
+          <p class="text">
+            <textarea name="text" class="feedback-input" id="comment" placeholder="Comment"></textarea>
+          </p>
+
+
+          <div class="submit">
+            <input type="submit" value="SEND" id="button-blue"/>
+            <div class="ease"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-<!-- add 'method="post"' to form? -->
-<form class="contactForm" action="orderSuccess.html">
-  <input type="text" name="name" value="" placeholder="Name">
-  <input type="text" name="phone" value="" placeholder="Phone">
-  <input type="text" name="email" value="" placeholder="Email">
-  <input type="text" name="comment" value="" placeholder="Question or comment...">
-  <input type="submit" name="submit" value="Submit">
-</form>
