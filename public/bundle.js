@@ -330,6 +330,15 @@ angular.module('rrs').directive('headerDirective', function () {
 
 // INITILIZE CONTROLLER
 // ============================================================
+angular.module("rrs").controller("aboutCtrl", ["$scope", function ($scope) {
+  // VARIABLES
+  // ============================================================
+
+  // FUNCTIONS
+  // ============================================================
+}]);
+// INITILIZE CONTROLLER
+// ============================================================
 angular.module("rrs").controller("accountCtrl", ["$scope", "user", function ($scope, user) {
   // VARIABLES
   // ============================================================
@@ -338,15 +347,6 @@ angular.module("rrs").controller("accountCtrl", ["$scope", "user", function ($sc
   console.log($scope.user);
 
   $scope.getUsers = function () {};
-  // FUNCTIONS
-  // ============================================================
-}]);
-// INITILIZE CONTROLLER
-// ============================================================
-angular.module("rrs").controller("aboutCtrl", ["$scope", function ($scope) {
-  // VARIABLES
-  // ============================================================
-
   // FUNCTIONS
   // ============================================================
 }]);
