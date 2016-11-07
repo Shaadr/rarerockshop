@@ -1,37 +1,35 @@
-<section class="productMainContainer">
-  <div class="productMainImageContainer">
-    <img ng-src='{{product.imageurl}}' alt="your image" />
-  </div>
-
-  <!-- ng-repeat joined table? -->
-  <div class="carouselContainer">
-    <!-- may need more of the following? -->
-    <div class="couroselImage">
-      <img ng-src='{{product.imageurl}}' alt="carousel image1"/>
-    </div>
-    <div class="couroselImage">
-      <img ng-src='{{product.imageurl}}' alt="carousel image2" />
-    </div>
-    <div class="couroselImage">
-      <img ng-src='{{product.imageurl}}' alt="carousel image3" />
-    </div>
-  </div>
-
-  <section class="productDescriptionContainer">
-    <div class="sect1">
-      <h5>weight: {{product.weight}} {{product.weighttype}}</h5>
-      <h5>measurements: {{product.measurements}}</h5>
+<div class="mainProductContainer">
+    <div class="productMainImageContainer">
+      <img ng-src='{{product.imageurl}}' alt="your image" />
     </div>
 
-    <div class="sect2">
-      <p>
-        description: {{product.description}}
-      </p>
+    <!-- ng-repeat joined table? -->
+    <div class="carouselContainer">
+      <!-- may need more of the following? -->
+      <div class="couroselImage">
+        <img ng-src='{{product.imageurl}}' alt="carousel image1"/>
+      </div>
+
     </div>
 
-    <div class="sect3">
-      <h5>Price: {{product.price}}</h5>
-      <button ui-sref='cart({})' type="button" name="button">Add to Cart</button>
-    </div>
-  </section>
-</section>
+    <section class="productDescriptionContainer">
+      <div class="sect1">
+        <h3>Weight: {{product.weight}} {{product.weighttype}}</h3>
+        <h3>Measurements: {{product.measurements}}</h3>
+      </div>
+
+      <div class="sect2">
+        <h3>
+          Description:
+        </h3>
+        <h3>
+          {{product.description}}
+        </h3>
+      </div>
+
+      <div class="sect3">
+        <h3>Price: ${{product.price}}</h3>
+      </div>
+    </section>
+    <button class="addtocart" ui-sref='cart({})' type="button" name="button">Add to Cart</button>
+</div>

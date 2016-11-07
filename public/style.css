@@ -47,7 +47,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   width: 90%;
-  height: 60vh;
+  height: 87vh;
   margin-top: 52px;
   border-radius: 25px; }
   .topHeader h1 {
@@ -141,6 +141,46 @@ body {
       text-align: center;
       font-family: 'Indie Flower', cursive; }
 
+.mainProductContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 62px; }
+
+.carouselContainer {
+  border-radius: 20px;
+  background-color: #373737;
+  margin: 15px 0 15px 0;
+  padding: 15px;
+  width: 55%;
+  max-height: 400px; }
+  .carouselContainer img {
+    max-height: 100px;
+    max-width: 125px; }
+
+.productDescriptionContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 70%;
+  margin-bottom: 20px;
+  background-color: #F4F4F4;
+  border-radius: 25px;
+  padding: 10px;
+  font-family: 'Indie Flower';
+  font-size: 30px;
+  color: #C0B283; }
+
+.addtocart {
+  margin-bottom: 20px;
+  background-color: #F4F4F4;
+  border-radius: 25px;
+  padding: 10px;
+  font-family: 'Indie Flower';
+  font-size: 20px;
+  color: #C0B283; }
 
 @import url("https://fonts.googleapis.com/css?family=Bangers|Bungee+Inline|Fontdiner+Swanky|Indie+Flower|Kalam:700|Prosto+One|Tillana:600");
 .storeSearchBar {
