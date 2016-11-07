@@ -159,5 +159,7 @@ body {
   padding-top: 10px; }
 
 .shopCaption {
-  color: #C0B283;
-  font-family: 'Indie Flower'; }
+  font-family: 'Indie Flower';
+  text-align: center; }
+  .shopCaption h3 {
+    color: #C0B283; }

@@ -7,12 +7,26 @@
   </div>
 </div>
 
+<form>
+  <div class="form-group storeSearchBar">
+    <input type="text" class="form-control" placeholder="Search Collection" ng-model="search.title">
+  </div>
+  <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+</form>
+<div class="shopSort">
+  Sort By: <br>
+  <select ng-model="searchText" ng-options="product.category as product.category for product in products | unique: 'category'" select-fix>
+  <option value="">All</option>
+  </select>
+</div>
 
-<div class="masterCollectionContainer" style="display: flex; flex-wrap:wrap;">
-  <div ng-repeat='product in products' class="row">
-    <div class="col-xs-6 col-md-3">
-      <a ui-sref='product({id: {{product.id}}})' class="thumbnail"> {{product.title}}
-        <img style='min-height: 200px; min-width: 200px;'ng-src='{{product.imageurl}}'>
-      </a>
+  <div class="row">
+    <div class="col-sm-6 col-md-4" ng-repeat="product in products | filter: searchText | filter: search">
+      <div class="thumbnail shopProductContainer">
+        <div class="caption shopCaption">
+            <h3>{{product.title}}</h3>
+        </div>
+        <img class="shopImg" ng-src="{{product.imageurl}}" alt="{{product.title}}">
+      </div>
     </div>
   </div>
