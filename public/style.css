@@ -1,13 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Bangers|Bungee+Inline|Fontdiner+Swanky|Indie+Flower|Kalam:700|Prosto+One|Tillana:600");
-.mainAboutContainer {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 50px; }
-  .mainAboutContainer h1 {
-    font-family: 'Indie Flower';
-    font-size: 50px; }
-
 .aboutRowContainer {
   display: flex;
   flex-direction: row;
@@ -39,11 +30,12 @@
   margin: 10px; }
 
 @import url("https://fonts.googleapis.com/css?family=Bangers|Bungee+Inline|Fontdiner+Swanky|Indie+Flower|Kalam:700|Prosto+One|Tillana:600");
+
+@import url("https://fonts.googleapis.com/css?family=Bangers|Bungee+Inline|Fontdiner+Swanky|Indie+Flower|Kalam:700|Prosto+One|Tillana:600");
 body {
   background-color: #DDD1C1; }
 
 .topHeader {
-  margin-bottom: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -51,9 +43,10 @@ body {
   background-image: url("https://static1.squarespace.com/static/57dad7a4f5e231f8a0209a8c/t/57ddbc8c414fb5461958858c/1474149522620/IMG_4832.jpg?format=2500w");
   background-repeat: no-repeat;
   background-size: cover;
-  width: 100%;
+  width: 90%;
   height: 60vh;
-  margin-top: 67px; }
+  margin-top: 52px;
+  border-radius: 25px; }
   .topHeader h1 {
     color: #C0B283;
     text-align: center;
@@ -113,33 +106,31 @@ body {
   border-color: #e7e7e7;
   max-width: 100%; }
 
-.aboutContainer {
-  display: flex;
-  justify-content: space-around;
-  align-items: center; }
-  .aboutContainer .homeText p {
-    text-align: justify; }
-  .aboutContainer .aboutImageContainer {
-    height: 500px;
-    width: 600px; }
-
-@import url("https://fonts.googleapis.com/css?family=Bangers|Bungee+Inline|Fontdiner+Swanky|Indie+Flower|Kalam:700|Prosto+One|Tillana:600");
-.shopTitleWrapper {
+.mainTitleWrapper {
   display: flex;
   justify-content: center;
   margin-top: 15px; }
-  .shopTitleWrapper .shopTitleContainer {
+  .mainTitleWrapper .mainTitleContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 90%;
     height: 60vh;
-    margin-top: 52px; }
-    .shopTitleWrapper .shopTitleContainer h1 {
+    margin-top: 52px;
+    border-radius: 25px; }
+    .mainTitleWrapper .mainTitleContainer h1 {
+      color: #C0B283;
+      text-align: center;
       font-size: 80px;
-      font-family: 'Indie Flower'; }
+      font-family: 'Indie Flower', cursive;
+      background: #383838;
+      border-radius: 20px;
+      opacity: .85;
+      padding: 15px;
+      letter-spacing: 2px; }
 
+@import url("https://fonts.googleapis.com/css?family=Bangers|Bungee+Inline|Fontdiner+Swanky|Indie+Flower|Kalam:700|Prosto+One|Tillana:600");
 .storeSearchBar {
   width: 40vw;
   margin: auto;
