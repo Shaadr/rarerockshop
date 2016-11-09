@@ -29,6 +29,17 @@ angular.module('rrs', ['ui.router', 'angular.filter'])
       resolve: {
         cart: function (cartService, $stateParams) {
           return cartService.getUserOrder();
+        },
+        user: function(authService, $state) {
+          return authService.getCurrentUser()
+            .then(function(response) {
+              if (!response.data)
+                $state.go('login');
+              return response.data;
+            })
+            .catch(function(err) {
+              $state.go('login');
+            });
         }
       }
     })

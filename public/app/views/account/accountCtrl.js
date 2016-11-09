@@ -5,9 +5,6 @@ angular.module("rrs").controller("accountCtrl", function($scope, user) {
   // ============================================================
 
   $scope.user = user
-  console.log($scope.user);
-
-
   $scope.getUsers = function() {
 
   }

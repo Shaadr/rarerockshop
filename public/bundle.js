@@ -23,6 +23,14 @@ angular.module('rrs', ['ui.router', 'angular.filter']).config(["$stateProvider",
     resolve: {
       cart: ["cartService", "$stateParams", function (cartService, $stateParams) {
         return cartService.getUserOrder();
+      }],
+      user: ["authService", "$state", function (authService, $state) {
+        return authService.getCurrentUser().then(function (response) {
+          if (!response.data) $state.go('login');
+          return response.data;
+        }).catch(function (err) {
+          $state.go('login');
+        });
       }]
     }
   }).state('collection', {
@@ -314,8 +322,6 @@ angular.module("rrs").controller("accountCtrl", ["$scope", "user", function ($sc
   // ============================================================
 
   $scope.user = user;
-  console.log($scope.user);
-
   $scope.getUsers = function () {};
   // FUNCTIONS
   // ============================================================
@@ -336,16 +342,25 @@ angular.module("rrs").controller("adminCtrl", ["$scope", function ($scope) {
 }]);
 // INITILIZE CONTROLLER
 // ============================================================
-angular.module("rrs").controller("cartCtrl", ["$scope", "cart", "$state", "cartService", function ($scope, cart, $state, cartService) {
+angular.module("rrs").controller("cartCtrl", ["$scope", "cart", "user", "$state", "cartService", function ($scope, cart, user, $state, cartService) {
   // VARIABLES
   // ============================================================
   $scope.cart = cart.data.cart;
   $scope.products = cart.data.products;
   $scope.id = $state.params.id;
+  $scope.user = user;
 
   // FUNCTIONS
   // ============================================================
 
+  // $scope.subTotal = function () {
+  //   console.log('products: '+$scope.products);
+  //   $scope.sTotal = 0;
+  //   for (var i=0; i < $scope.products.length; i++) {
+  //     $scope.sTotal += $scope.product[i].price
+  //   }
+  //   return $scope.sTotal;
+  // }
 }]);
 // INITILIZE CONTROLLER
 // ============================================================

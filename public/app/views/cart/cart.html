@@ -1,22 +1,19 @@
 <div class="mainCartContainer">
-  <h1>Cart</h1> {{products}}
+  <h1>Cart</h1>
   <div class="cartItemContainer">
-
-
-      <!-- uncomment below~!~ -->
-      <ul ng-repeat='item in products | filter: cartFilter |orderBy: sortProp : sortDirection'>
+      <ul ng-repeat='product in products'>
         <li class='cartList'>
           <button type="button" name="removeItem">x</button>
-          <h5><a ui-sref='product/:id'></a> item.itemName</h5>
-          <h5>item.price indivudual (base per lb)</h5>
-          <h5>item.price total (total per lb)</h5>
+          <h5><a ui-sref='product/:id'></a>{{product.title}}</h5>
+          <h5>{{product.price}} indivudual (base per lb)</h5>
+          <h5>product.price total (total per lb)</h5>
         </li>
       </ul>
       <hr>
-      <h5>subtotal: subtotal</h5>
+      <h5>subtotal: {{subTotal}}</h5>
       <h5>+ tax: $0.67</h5>
       <h5>+ shipping: $5.00</h5>
-      <h4>Grandtotal</h4>
+      <h4>{{Grandtotal}}</h4>
     </div>
 </div>
 
@@ -24,16 +21,16 @@
 
   <div class="doubleCheckContainer">
     <div class="doubleCheck">
-      <h1>user.username</h1>
+      <h1>Welcome {{user.username}}!</h1>
       <div class="yellowBox">
         <p>
           ** Please check to make sure all this information is correct!!**
         </p>
       </div>
       <div class="checkShipping">
-        <h5>user.shippingAddress</h5>
-        <h5>user.phone</h5>
-        <h5>user.email</h5>
+        <h5></h5>
+        <h5>{{user.phone}}</h5>
+        <h5>{{user.email}}</h5>
       </div>
       <div class="checkPayment">
         <h5>user.payment.card.cardtype</h5>
