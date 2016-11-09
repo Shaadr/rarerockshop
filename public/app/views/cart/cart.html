@@ -1,40 +1,26 @@
-<div>
-  <h1>Cart</h1>
+<div class="mainCartContainer">
+  <h1>Cart</h1> {{products}}
+  <div class="cartItemContainer">
+
+
+      <!-- uncomment below~!~ -->
+      <ul ng-repeat='item in products | filter: cartFilter |orderBy: sortProp : sortDirection'>
+        <li class='cartList'>
+          <button type="button" name="removeItem">x</button>
+          <h5><a ui-sref='product/:id'></a> item.itemName</h5>
+          <h5>item.price indivudual (base per lb)</h5>
+          <h5>item.price total (total per lb)</h5>
+        </li>
+      </ul>
+      <hr>
+      <h5>subtotal: subtotal</h5>
+      <h5>+ tax: $0.67</h5>
+      <h5>+ shipping: $5.00</h5>
+      <h4>Grandtotal</h4>
+    </div>
 </div>
 
-<div class="cartItemContainer">
-    <!-- <form class="form-inline searchForm" role="form">
-      <div class="form-group">
 
-        <input class="form-control" placeholder="Search Name" ng-model="friendFilter.name">
-        <input class="form-control" placeholder="Search Location" ng-model="friendFilter.current_location.name">
-
-        <select ng-model='sortProp' ng-options='prop.value as prop.name for prop in sortProp'> </select>
-
-        <select class="input-medium" ng-model="sortDirection">
-          <option value="true">Descending</option>
-          <option value="">Ascending</option>
-        </select>
-      </div>
-    </form> -->
-
-
-    <!-- uncomment below~!~ -->
-    <!-- <ul ng-repeat='item in cart | filter: cartFilter |orderBy: sortProp : sortDirection'> -->
-    <ul>
-      <li class='cartList'>
-        <button type="button" name="removeItem">x</button>
-        <h5><a ui-sref='product/:id'></a> item.itemName</h5>
-        <h5>item.price indivudual (base per lb)</h5>
-        <h5>item.price total (total per lb)</h5>
-      </li>
-    </ul>
-    <hr>
-    <h5>subtotal: subtotal</h5>
-    <h5>+ tax: $0.67</h5>
-    <h5>+ shipping: $5.00</h5>
-    <h4>Grandtotal</h4>
-  </div>
 
   <div class="doubleCheckContainer">
     <div class="doubleCheck">

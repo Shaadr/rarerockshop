@@ -25,7 +25,12 @@ angular.module('rrs', ['ui.router', 'angular.filter'])
     .state('cart', {
       templateUrl: './app/views/cart/cart.html',
       controller: 'cartCtrl',
-      url: '/cart'
+      url: '/cart/:id',
+      resolve: {
+        cart: function (cartService, $stateParams) {
+          return cartService.getUserOrder();
+        }
+      }
     })
     .state('collection', {
       templateUrl: './app/views/collection/collection.html',
@@ -66,10 +71,14 @@ angular.module('rrs', ['ui.router', 'angular.filter'])
       resolve: {
         product: function (shopService, $stateParams) {
           console.log($stateParams);
-          return shopService.getInventoryById($stateParams.id).then(function(response) {
-            return response.data;
-          });
+          return shopService.getInventoryById($stateParams.id)
+            .then(function(response) {
+              return response.data;
+            });
         }
+        // products: function (productService, $state) {
+        //   return productService.getProducts()
+        // }
       }
     })
     .state('shop', {

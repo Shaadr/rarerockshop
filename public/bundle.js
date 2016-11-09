@@ -19,7 +19,12 @@ angular.module('rrs', ['ui.router', 'angular.filter']).config(["$stateProvider",
   }).state('cart', {
     templateUrl: './app/views/cart/cart.html',
     controller: 'cartCtrl',
-    url: '/cart'
+    url: '/cart/:id',
+    resolve: {
+      cart: ["cartService", "$stateParams", function (cartService, $stateParams) {
+        return cartService.getUserOrder();
+      }]
+    }
   }).state('collection', {
     templateUrl: './app/views/collection/collection.html',
     controller: 'collectionCtrl',
@@ -58,6 +63,9 @@ angular.module('rrs', ['ui.router', 'angular.filter']).config(["$stateProvider",
           return response.data;
         });
       }]
+      // products: function (productService, $state) {
+      //   return productService.getProducts()
+      // }
     }
   }).state('shop', {
     templateUrl: './app/views/shop/shop.html',
@@ -145,46 +153,39 @@ angular.module('rrs').service('authService', ["$http", function ($http) {
 }]);
 // INITILIZE SERVICE
 // ============================================================
-angular.module("rrs").service("cartService", ["$http", function ($http) {
+angular.module("rrs").service("cartService", ["$http", "$state", function ($http, $state) {
   // CRUD FUNCTIONS
   // ============================================================
-  this.getCart = function (id) {
-    var query = "";
-    if (id) query = '?_id=' + id;
+
+  this.getUserOrder = function () {
     return $http({
-      method: 'GET',
-      url: '/cart' + query
-    }).then(function (response) {
-      if (response.data.length < 2) return response.data[0];
-      return response.data;
-    });
-  };
-  this.createCart = function (cart) {
-    return $http({
-      method: 'POST',
-      url: '/cart',
-      data: cart
+      method: "GET",
+      url: '/api/cart'
     }).then(function (response) {
       return response;
+    }).catch(function (err) {
+      console.log(err);
     });
   };
-  this.editCart = function (id, cart) {
+
+  this.addToCart = function (id, productid, qty) {
     return $http({
-      method: 'PUT',
-      url: "/cart/" + id,
-      data: cart
-    }).then(function (response) {
-      return response;
+      method: "POST",
+      url: '/api/add/item/cart/' + id,
+      data: {
+        id: productid,
+        qty: qty
+      }
     });
   };
-  this.deleteCart = function (id) {
+
+  this.removeFromCart = function (id) {
     return $http({
       method: 'DELETE',
-      url: '/cart/' + id
-    }).then(function (response) {
-      return response;
+      url: '/api/delete/item/cart/' + id
     });
   };
+
   // OTHER FUNCTIONS
   // ============================================================
 }]);
@@ -212,41 +213,10 @@ angular.module("rrs").service("collectionService", ["$http", function ($http) {
 angular.module("rrs").service("ProductsService", ["$http", function ($http) {
   // CRUD FUNCTIONS
   // ============================================================
-  this.getProducts = function (id) {
-    var query = "";
-    if (id) query = '?_id=' + id;
+  this.getProducts = function () {
     return $http({
-      method: 'GET',
-      url: '/products' + query
-    }).then(function (response) {
-      if (response.data.length < 2) return response.data[0];
-      return response.data;
-    });
-  };
-  this.createProducts = function (products) {
-    return $http({
-      method: 'POST',
-      url: '/products',
-      data: products
-    }).then(function (response) {
-      return response;
-    });
-  };
-  this.editProducts = function (id, products) {
-    return $http({
-      method: 'PUT',
-      url: "/products/" + id,
-      data: products
-    }).then(function (response) {
-      return response;
-    });
-  };
-  this.deleteProducts = function (id) {
-    return $http({
-      method: 'DELETE',
-      url: '/products/' + id
-    }).then(function (response) {
-      return response;
+      method: "GET",
+      url: "/api/products"
     });
   };
   // OTHER FUNCTIONS
@@ -366,12 +336,16 @@ angular.module("rrs").controller("adminCtrl", ["$scope", function ($scope) {
 }]);
 // INITILIZE CONTROLLER
 // ============================================================
-angular.module("rrs").controller("cartCtrl", ["$scope", function ($scope) {
+angular.module("rrs").controller("cartCtrl", ["$scope", "cart", "$state", "cartService", function ($scope, cart, $state, cartService) {
   // VARIABLES
   // ============================================================
+  $scope.cart = cart.data.cart;
+  $scope.products = cart.data.products;
+  $scope.id = $state.params.id;
 
   // FUNCTIONS
   // ============================================================
+
 }]);
 // INITILIZE CONTROLLER
 // ============================================================
@@ -403,15 +377,6 @@ angular.module("rrs").controller("homeCtrl", ["$scope", function ($scope) {
 // INITILIZE CONTROLLER
 // ============================================================
 angular.module("rrs").controller("lapidaryCtrl", ["$scope", function ($scope) {
-  // VARIABLES
-  // ============================================================
-
-  // FUNCTIONS
-  // ============================================================
-}]);
-// INITILIZE CONTROLLER
-// ============================================================
-angular.module("rrs").controller("orderSuccessCtrl", ["$scope", function ($scope) {
   // VARIABLES
   // ============================================================
 
@@ -456,9 +421,43 @@ angular.module("rrs").controller("loginCtrl", ["$scope", "authService", "$state"
 }]);
 // INITILIZE CONTROLLER
 // ============================================================
-angular.module("rrs").controller("productCtrl", ["$scope", "product", function ($scope, product) {
+angular.module("rrs").controller("orderSuccessCtrl", ["$scope", function ($scope) {
+  // VARIABLES
+  // ============================================================
+
+  // FUNCTIONS
+  // ============================================================
+}]);
+// INITILIZE CONTROLLER
+// ============================================================
+angular.module("rrs").controller("productCtrl", ["$scope", "product", "cartService", "$state", function ($scope, product, cartService, $state) {
 
   $scope.product = product;
+  console.log(product);
+  $scope.qty = 1;
+
+  $scope.getCart = function () {
+    cartService.getUserOrder().then(function (response) {
+      console.log(response);
+
+      if (response) {
+        $scope.orderid = response.data.order.id;
+        console.log($scope.orderid);
+      } else {
+        $scope.orderid = null;
+      }
+    });
+  };
+  $scope.getCart();
+
+  $scope.addToCart = function (id, productid, qty) {
+    if (!$scope.orderid) {
+      return alert('Please login before adding an item');
+    }
+    cartService.addToCart(id, productid, qty).then(function (response) {
+      console.log(response.data);
+    });
+  };
 }]);
 angular.module("rrs").controller("shopCtrl", ["$scope", "products", function ($scope, products) {
 

@@ -67,6 +67,11 @@
     background-color-margin: 5px;
     background-color-padding: 5px; }
 
+.mainCartContainer {
+  margin-top: 62px;
+  display: flex;
+  flex-direction: column; }
+
 @import url("https://fonts.googleapis.com/css?family=Bangers|Bungee+Inline|Fontdiner+Swanky|Indie+Flower|Kalam:700|Prosto+One|Tillana:600");
 .collectionCaption {
   font-family: 'Indie Flower';
@@ -204,7 +209,8 @@ body {
     width: 90%;
     height: 60vh;
     margin-top: 52px;
-    border-radius: 25px; }
+    border-radius: 25px;
+    background-repeat: no-repeat; }
     .mainTitleWrapper .mainTitleContainer h1 {
       color: #C0B283;
       text-align: center;
@@ -226,7 +232,11 @@ body {
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: 62px; }
+  margin-top: 52px;
+  margin-bottom: 20px;
+  font-family: 'Indie Flower';
+  color: #C0B283;
+  font-size: 50px; }
 
 .carouselContainer {
   border-radius: 20px;

@@ -1,45 +1,40 @@
 // INITILIZE SERVICE
 // ============================================================
-angular.module("rrs").service("cartService", function($http) {
+angular.module("rrs").service("cartService", function($http, $state) {
   // CRUD FUNCTIONS
   // ============================================================
-  this.getCart = function(id) {
-    var query = "";
-    if (id) query = '?_id=' + id;
-    return $http({
-      method: 'GET',
-      url: '/cart' + query
-    }).then(function(response) {
-      if (response.data.length < 2) return response.data[0];
-      return response.data;
+
+  this.getUserOrder = function () {
+    return $http ({
+      method: "GET",
+      url: '/api/cart'
+    })
+    .then(function(response) {
+      return response
+    })
+    .catch(function(err) {
+      console.log(err);
     });
   };
-  this.createCart = function(cart) {
+
+  this.addToCart = function (id, productid, qty) {
     return $http({
-      method: 'POST',
-      url: '/cart',
-      data: cart
-    }).then(function(response) {
-      return response;
+      method: "POST",
+      url:'/api/add/item/cart/' + id,
+      data: {
+        id: productid,
+        qty: qty
+      }
     });
   };
-  this.editCart = function(id, cart) {
-    return $http({
-      method: 'PUT',
-      url: "/cart/" + id,
-      data: cart
-    }).then(function(response) {
-      return response;
-    });
-  };
-  this.deleteCart = function(id) {
+
+  this.removeFromCart = function (id) {
     return $http({
       method: 'DELETE',
-      url: '/cart/' + id
-    }).then(function(response) {
-      return response;
+      url:'/api/delete/item/cart/' + id
     });
   };
+
   // OTHER FUNCTIONS
   // ============================================================
 

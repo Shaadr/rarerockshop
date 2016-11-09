@@ -31,6 +31,7 @@ dbSetup.run();
 //controllers
 var modelCtrl = require('./controllers/modelCtrl');
 var userCtrl = require('./controllers/userCtrl');
+var cartCtrl = require('./controllers/cartCtrl')
 
 // SERVICES //
 var passport = require('./services/passport');
@@ -39,7 +40,7 @@ var passport = require('./services/passport');
 var isAuthed = function(req, res, next) {
 	if (!req.isAuthenticated()) {
     console.log('not authed');
-    return res.sendStatus(401);
+    return res.sendStatus(401).send();
   }
   else {
 	   next();
@@ -97,6 +98,11 @@ app.post('/account', userCtrl.createUser)
 app.get('/user', userCtrl.read);
 app.get('/me', isAuthed, userCtrl.me);
 app.get('/account', isAuthed, userCtrl.read)
+
+//Products in cart
+app.post('/api/add/item/cart/:cartid', cartCtrl.addToCart)
+app.delete('/api/delete/item/cart/:productid', cartCtrl.deleteCartItem)
+app.get('/api/cart', isAuthed, cartCtrl.getUserOrder)
 
 
 // app.put('/model/:id', modelCtrl.update);

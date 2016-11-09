@@ -44,13 +44,15 @@ module.exports = {
 				return res.status(500).send(err)
 			}
 
-
-
-
-			// Send user back without password.
-			delete user.password;
-			res.status(200)
-				.send(user);
+			user = user[0];
+				db.order_create([user.id], function(err, order) {
+					if (err) {
+						return res.status(500)
+							.send(err);
+					}
+					res.status(200)
+						.send('User and Order created successfully');
+				});
 		});
 	},
 
@@ -76,7 +78,6 @@ module.exports = {
 
 		// Remove password for security
 		var user = req.user[0];
-
 		delete user.password;
 
 		// Return user
