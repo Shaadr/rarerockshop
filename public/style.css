@@ -67,10 +67,85 @@
     background-color-margin: 5px;
     background-color-padding: 5px; }
 
-.mainCartContainer {
-  margin-top: 62px;
+.mainCartWrapper {
   display: flex;
-  flex-direction: column; }
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 62px; }
+  .mainCartWrapper h1 {
+    background-color: rgba(55, 55, 55, 0.85);
+    color: #17a697;
+    font-family: 'Indie Flower', cursive;
+    font-size: 80px;
+    border-radius: 25px;
+    padding: 15px 25px 15px 25px; }
+
+hr {
+  border: 1px solid;
+  width: 100%;
+  margin-bottom: 35px; }
+
+.mainCartContainer {
+  margin-bottom: 25px;
+  margin-top: 62px;
+  flex-direction: column;
+  background-color: rgba(55, 55, 55, 0.85);
+  color: #17a697;
+  font-family: 'Indie Flower', cursive;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+  border-radius: 25px;
+  font-size: 22px; }
+
+.cartItemContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  margin: 15px; }
+  .cartItemContainer ul {
+    width: 80%; }
+    .cartItemContainer ul li {
+      margin: 15px;
+      border: 1px solid white;
+      border-radius: 25px;
+      padding: 10px; }
+      .cartItemContainer ul li button {
+        min-width: 15%;
+        font-size: 12px;
+        justify-content: flex-end;
+        border-radius: 25px;
+        color: black; }
+
+.cartList h5 {
+  font-size: 22px; }
+
+.doubleCheckContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  align-items: center;
+  text-align: center;
+  padding: 10px; }
+  .doubleCheckContainer form {
+    padding-bottom: 15px; }
+
+.cartTotalContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: right; }
+  .cartTotalContainer h5 {
+    width: 80%;
+    font-size: 20px;
+    margin-bottom: 20px; }
+  .cartTotalContainer h4 {
+    width: 80%;
+    font-size: 30px; }
 
 @import url("https://fonts.googleapis.com/css?family=Bangers|Bungee+Inline|Fontdiner+Swanky|Indie+Flower|Kalam:700|Prosto+One|Tillana:600");
 .collectionCaption {
@@ -164,19 +239,21 @@ body {
     justify-content: space-around;
     padding: 10px;
     margin: 10px; }
+    .mainLoginContainer .loginContainer h2 {
+      text-align: center; }
 
 .longerinput {
   width: 100%; }
 
 .loginButton {
-  margin-top: 15px;
-  border-radius: 25px; }
+  margin-top: 15px; }
 
 .newUserForm {
   width: 80%;
   text-align: center; }
   .newUserForm form input {
-    margin: 5px 2px 5px 2px; }
+    margin: 5px 2px 5px 2px;
+    width: 75%; }
 
 .stateSelectContainer {
   width: auto; }

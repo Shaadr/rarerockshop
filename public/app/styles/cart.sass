@@ -1,4 +1,80 @@
-.mainCartContainer
+.mainCartWrapper
+  display: flex
+  justify-content: space-around
+  align-items: center
+  flex-direction: column
   margin-top: 62px
+  h1
+    background-color: rgba(55, 55, 55, 0.85)
+    color: rgba(23, 166, 151, 1)
+    font-family:  'Indie Flower', cursive
+    font-size: 80px
+    border-radius: 25px
+    padding: 15px 25px 15px 25px
+
+hr
+  border: 1px solid
+  width: 100%
+  margin-bottom: 35px
+
+.mainCartContainer
+  margin-bottom: 25px
+  margin-top: 62px
+  flex-direction: column
+  background-color: rgba(55, 55, 55, 0.85)
+  color: rgba(23, 166, 151, 1)
+  font-family:  'Indie Flower', cursive
+  flex-direction: row
+  justify-content: space-around
+  align-items: center
+  width: 90%
+  border-radius: 25px
+  font-size: 22px
+
+.cartItemContainer
   display: flex
   flex-direction: column
+  justify-content: space-around
+  align-items: center
+  text-align: center
+  margin: 15px
+  ul
+    width: 80%
+    li
+      margin: 15px
+      border: 1px solid white
+      border-radius: 25px
+      padding: 10px
+      button
+        min-width: 15%
+        font-size: 12px
+        justify-content: flex-end
+        border-radius: 25px
+        color: black
+
+.cartList
+  h5
+    font-size: 22px
+
+.doubleCheckContainer
+    display: flex
+    flex-direction: column
+    text-align: right
+    align-items: center
+    text-align: center
+    padding: 10px
+    form
+      padding-bottom: 15px
+
+.cartTotalContainer
+  width: 100%
+  display: flex
+  flex-direction: column
+  text-align: right
+  h5
+    width: 80%
+    font-size: 20px
+    margin-bottom: 20px
+  h4
+    width: 80%
+    font-size: 30px
