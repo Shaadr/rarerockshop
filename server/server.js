@@ -104,6 +104,9 @@ app.post('/api/add/item/cart/:cartid', cartCtrl.addToCart)
 app.delete('/api/delete/item/cart/:productid', cartCtrl.deleteCartItem)
 app.get('/api/cart', isAuthed, cartCtrl.getUserOrder)
 
+//order
+app.put('/api/order/complete/:orderid/:userid', cartCtrl.completeOrder, cartCtrl.createOrder)
+
 
 // app.put('/model/:id', modelCtrl.update);
 // app.delete('/model/:id', modelCtrl.delete);

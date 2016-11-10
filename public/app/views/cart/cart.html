@@ -45,8 +45,8 @@
         <ul ng-repeat='product in products'>
           <li class='cartList'>
             <h5><a ui-sref='product/:id'></a>{{product.title}}</h5>
-            <h5>{{product.price}} indivudual (base per lb)</h5>
-            <h5>product.price total (total per lb)</h5>
+            <h5>${{product.price}} per {{product.weighttype}}</h5>
+            <!-- <h5>product.price total (total per lb)</h5> -->
               <button type="button" name="removeItem" ng-click='removeFromCart(product.id)'>Remove</button>
           </li>
         </ul>
@@ -54,10 +54,10 @@
 
           <div class="doubleCheckContainer">
             <div class="cartTotalContainer">
-              <h5>subtotal: {{subTotal}}</h5>
-              <h5>+ tax: $0.67</h5>
-              <h5>+ shipping: $5.00</h5>
-              <h4>Total: {{Grandtotal}}</h4>
+              <h5>subtotal: ${{sTotal}}</h5>
+              <h5>+ {{tax * 100}}% tax: ${{+(tax * sTotal).toFixed(2)}}</h5>
+              <h5>+ shipping: ${{shipping}}</h5>
+              <h4>Total: ${{gTotal}}</h4>
               <hr>
             </div>
             <form action="/your-charge-code" method="POST" id="payment-form">
@@ -87,8 +87,10 @@
           </div>
 
 
-          <input type="submit" class="submit" value="Submit Payment">
+          <!-- <input type="submit" class="submit" value="Submit Payment"> -->
         </form>
+
+        <button ui-sref="orderSuccess" type="button" name="button" ng-click="placeOrder(id, order.id)">Place Order</button>
             <!-- <div class="doubleCheck">
               <h1>Welcome {{user.username}}!</h1>
               <div class="yellowBox">

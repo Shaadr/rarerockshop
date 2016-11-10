@@ -46,5 +46,27 @@ module.exports = {
 					.send(completeOrder);
 			});
 		});
+	},
+
+  completeOrder: function (req, res, next) {
+    db.order_complete([req.params.orderid], function (err, order) {
+      if (err) {
+      	return res.status(500)
+      		.send(err);
+    	}
+      next();
+    });
+  },
+
+  createOrder: function(req, res, next) {
+		db.order_create([req.params.userid], function(err, order) {
+			if (err) {
+				return res.status(500)
+					.send(err);
+			}
+			res.status(200)
+				.send('Order created successfully');
+		});
 	}
+
 };

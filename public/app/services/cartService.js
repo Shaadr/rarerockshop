@@ -35,6 +35,13 @@ angular.module("rrs").service("cartService", function($http, $state) {
     });
   };
 
+  this.placeOrder = function (id, orderid) {
+    return $http({
+      method: "PUT",
+      url: '/api/order/complete/' + orderid + "/" + id
+    })
+  }
+
   // OTHER FUNCTIONS
   // ============================================================
 

@@ -14,7 +14,7 @@
     </div>
   </form>
   <div class="shopSort">
-    Sort By: <br>
+    <h5 style='color:white; margin-right: 10px;'>Sort By: </h5> <br>
     <select ng-model="searchText" ng-options="product.category as product.category for product in products | unique: 'category'" select-fix>
     <option value="">All</option>
     </select>
