@@ -1,31 +1,34 @@
-<div class="mainTitleWrapper">
-  <div class="mainTitleContainer" style="background-position: center; background-image:url('http://fineartamerica.com/images/artworkimages/medium/1/bisbee-turquoise-sergio-salvador.jpg')">
-    <h1>Collection</h1>
+<div style='background-image: url("https://images.unsplash.com/photo-1478502161016-a691575b097b"); background-position:center; background-size:contain`; background-repeat:repeat;'>
+  <div class="mainTitleWrapper">
+    <div class="mainTitleContainer" style="background-position: center; background-image:url('http://fineartamerica.com/images/artworkimages/medium/1/bisbee-turquoise-sergio-salvador.jpg')">
+      <h1>Collection</h1>
 
-  </br>
-    <img class="logo" src="http://caspianpetrotech.com/wp-content/uploads/2015/10/logo-placeholder.png" alt="" />
-  </div>
-</div>
-
-<form>
-  <div class="form-group storeSearchBar">
-    <input type="text" class="form-control" placeholder="Search Collection" ng-model="search.title">
-  </div>
-</form>
-<div class="shopSort">
-  Sort By: <br>
-  <select ng-model="searchText" ng-options="product.category as product.category for product in products | unique: 'category'" select-fix>
-  <option value="">All</option>
-  </select>
-</div>
-
-  <div class="row">
-    <div class="col-sm-6 col-md-4" ng-repeat="product in products | filter: searchText | filter: search">
-      <div class="thumbnail shopProductContainer">
-        <div class="caption collectionCaption">
-            <h3>{{product.title}}</h3>
-        </div>
-        <img class="shopImg" ng-src="{{product.imageurl}}" alt="{{product.title}}">
-      </div>
+    </br>
+      <img class="logo" src="http://caspianpetrotech.com/wp-content/uploads/2015/10/logo-placeholder.png" alt="" />
     </div>
   </div>
+
+  <form>
+    <div class="form-group storeSearchBar">
+      <input type="text" class="form-control" placeholder="Search Collection" ng-model="search.title">
+    </div>
+  </form>
+  <div class="shopSort">
+    Sort By: <br>
+    <select ng-model="searchText" ng-options="product.category as product.category for product in products | unique: 'category'" select-fix>
+    <option value="">All</option>
+    </select>
+  </div>
+
+    <div class="row">
+      <div class="col-sm-6 col-md-4" ng-repeat="product in products | filter: searchText | filter: search">
+        <div class="thumbnail shopProductContainer">
+          <div class="caption collectionCaption">
+              <h3>{{product.title}}</h3>
+          </div>
+          <img class="shopImg" ng-src="{{product.imageurl}}" alt="{{product.title}}">
+        </div>
+      </div>
+    </div>
+
+</div>

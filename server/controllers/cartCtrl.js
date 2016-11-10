@@ -27,10 +27,8 @@ module.exports = {
   },
 
   getUserOrder: function(req, res, next) {
-    console.log(req.user);
 		var completeOrder = {};
 		db.order_by_user([req.user[0].id], function(err, cart) {
-			console.log(err);
 			if (err) {
 				return res.status(500)
 					.send(err);
@@ -38,7 +36,6 @@ module.exports = {
 
 			completeOrder.order = cart[0];
 			db.product_cart_find([completeOrder.order.id], function(err, products) {
-				console.log(products);
 				if (err) {
 					return res.status(500)
 						.send(err);

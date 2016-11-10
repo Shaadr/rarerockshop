@@ -352,7 +352,18 @@ angular.module("rrs").controller("cartCtrl", ["$scope", "cart", "user", "$state"
 
   // FUNCTIONS
   // ============================================================
+  $scope.getOrder = function () {
+    cartService.getUserOrder($scope.id).then(function (response) {
+      $scope.cart = response.data.cart;
+      $scope.products = response.data.products;
+    });
+  };
 
+  $scope.removeFromCart = function (id) {
+    cartService.removeFromCart(id).then(function (response) {
+      $scope.getOrder();
+    });
+  };
   // $scope.subTotal = function () {
   //   console.log('products: '+$scope.products);
   //   $scope.sTotal = 0;
