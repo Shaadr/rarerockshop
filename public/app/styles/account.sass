@@ -11,13 +11,24 @@
   color: #C0B283
   padding-bottom: 15px
   text-align: center
+  @media (max-width: 780px)
+    flex-direction: column
   h1
     font-size: 40px
   h5
     font-size: 22px
+
+.accountUpdate
+  display: flex
+  flex-direction: column
+  justify-content: center
+  input
+    margin: 5px 0
   button
-    margin: 5px 0 5px 0
-    font-size: 16px
+    margin: 5px 0
+    font-size: 12px
+    min-width: 35%
+    justify-content: center
 
 .acountInfo
   background-color: #373737
@@ -25,7 +36,7 @@
 
 .orders
   text-align: center
-  width: 100%
+  min-width: 48%
   h1
     font-size: 40px
 .singleOrder
@@ -34,3 +45,6 @@
     opacity: .8
     margin: 5px
     padding: 5px
+
+.accountHr
+  color: #C0B283

@@ -93,6 +93,9 @@ app.get('/api/inventory/:id', function (req, res) {
   });
 });
 
+app.put('/pwd/:id', userCtrl.updatePwd)
+app.put('/account/update/:id', userCtrl.update)
+
 app.post('/register', userCtrl.register);
 app.post('/account', userCtrl.createUser)
 app.get('/user', userCtrl.read);

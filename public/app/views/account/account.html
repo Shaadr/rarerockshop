@@ -7,14 +7,23 @@
   <section class="mainAccountContainer">
     <div class="accountInfo">
       <h1>Account Information</h1>
-      <h5> Welcome {{user.firstname}} {{user.lastname}}!</h5>
+      <h5>Welcome {{user.firstname}} {{user.lastname}}!</h5>
       <h5>Username: {{user.username}}</h5>
       <h5>Password: *****</h5>
-      <button type="button" name="button">Change Username</button><br>
-      <button type="button" name="button">Change Password</button>
+      <!-- <h5>Address: {{user.address}}</h5> -->
+      <hr class="accountHr">
+      <div class="accountUpdate">
+        <input ng-model='users.username' type="input" name="name" value="">
+        <button type="button" name="button" ng-click='updateUsername(user.id, users.username)'>Change Username</button><br>
+        <input ng-model='user.password' type="input" name="name" value="">
+        <button type="button" name="button" ng-click="updatePwd(user.id,user.password)">Change Password</button>
+        <!-- <input ng-model='users.address' type="input" name="name" value="">
+        <button type="button" name="button" ng-click='updateAddress(user.id, users.address)'>Add/Update Address</button><br> -->
+      </div>
+
     </div>
 
-    <div class="Orders">
+    <div class="orders">
       <h1>Orders</h1>
       <div class="singleOrder">
         <h5>Order Number: {{ordernumber}}</h5>

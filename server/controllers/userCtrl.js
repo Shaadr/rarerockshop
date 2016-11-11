@@ -86,10 +86,30 @@ module.exports = {
 	},
 
 	update: function(req, res, next) {
-		User.findByIdAndUpdate(req.params._id, req.body, function(err, result) {
-			if (err) next(err);
+		console.log("lksdjflsd   "+req.body.username);
+
+		db.user_username_update([req.params.id, req.body.username], function(err, result) {
+			if (err) console.log("I AM ERR " + err);;
 			res.status(200)
 				.send('user updated');
 		});
+	},
+
+		updatePwd: function(req, res, next) {
+			console.log("reqbody " + req.body);
+			var user = req.body;
+			user.password = hashPassword(user.password);
+			// console.log("lksdjflsd   "+req.body.username);
+			db.user_password_update([req.params.id, req.body.password], function(err, result) {
+				// console.log("immapassword" + user.password);
+				if (err) console.log("I AM ERR " + err);
+				// user.password = hashPassword(user.password);
+				res.status(200)
+					.send('user password updated');
+			});
 	}
+
+
+
+
 };

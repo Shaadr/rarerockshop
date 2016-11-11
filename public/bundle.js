@@ -116,6 +116,46 @@ angular.module("rrs").directive('selectFix', function () {
         }
     };
 });
+// INITILIZE SERVICE
+// ============================================================
+angular.module("rrs").service("accountService", ["$http", function ($http) {
+  // CRUD FUNCTIONS
+  // ============================================================
+
+  this.updateUsername = function (id, username) {
+    console.log("THERVICE" + username, id);
+    return $http({
+      method: 'PUT',
+      url: '/account/update/' + id,
+      data: { username: username }
+    }).then(function (response) {
+      alert('Username successfully updated. Please Re-Login');
+      return response;
+    });
+  };
+
+  this.updatePwd = function (id, password) {
+    console.log("THERVICE" + password, id);
+    return $http({
+      method: 'PUT',
+      url: '/pwd/' + id,
+      data: { password: password }
+    }).then(function (response) {
+      alert('Password successfully updated. Please Re-Login');
+      return response;
+    });
+  };
+  // this.deleteUser = function(id) {
+  //   return $http({
+  //     method: 'DELETE',
+  //     url: '/user' + id
+  //   }).then(function(response) {
+  //     return response;
+  //   });
+  // };
+  // OTHER FUNCTIONS
+  // ============================================================
+}]);
 angular.module('rrs').service('authService', ["$http", function ($http) {
 
   this.login = function (user) {
@@ -255,51 +295,6 @@ angular.module("rrs").service("shopService", ["$http", function ($http) {
     });
   };
 }]);
-// INITILIZE SERVICE
-// ============================================================
-angular.module("rrs").service("userService", ["$http", function ($http) {
-  // CRUD FUNCTIONS
-  // ============================================================
-  this.getUser = function (id) {
-    var query = "";
-    if (id) query = '?_id=' + id;
-    return $http({
-      method: 'GET',
-      url: '/user' + query
-    }).then(function (response) {
-      if (response.data.length < 2) return response.data[0];
-      return response.data;
-    });
-  };
-  this.createUser = function (user) {
-    return $http({
-      method: 'POST',
-      url: '/user',
-      data: user
-    }).then(function (response) {
-      return response;
-    });
-  };
-  this.editUser = function (id, user) {
-    return $http({
-      method: 'PUT',
-      url: "/user/" + id,
-      data: user
-    }).then(function (response) {
-      return response;
-    });
-  };
-  this.deleteUser = function (id) {
-    return $http({
-      method: 'DELETE',
-      url: '/user/' + id
-    }).then(function (response) {
-      return response;
-    });
-  };
-  // OTHER FUNCTIONS
-  // ============================================================
-}]);
 angular.module('rrs').directive('footerDirective', function () {
   return {
     restrict: 'EA',
@@ -324,12 +319,28 @@ angular.module("rrs").controller("aboutCtrl", ["$scope", function ($scope) {
 }]);
 // INITILIZE CONTROLLER
 // ============================================================
-angular.module("rrs").controller("accountCtrl", ["$scope", "user", function ($scope, user) {
+angular.module("rrs").controller("accountCtrl", ["$scope", "user", "accountService", "$state", function ($scope, user, accountService, $state) {
   // VARIABLES
   // ============================================================
 
   $scope.user = user;
-  $scope.getUsers = function () {};
+  console.log(user);
+
+  $scope.updateUsername = function (id, username) {
+    console.log(username, id);
+    accountService.updateUsername(id, username).then(function (response) {
+      console.log(response.data);
+      $state.go('login');
+    });
+  };
+
+  $scope.updatePwd = function (id, password) {
+    console.log(password, id);
+    accountService.updatePwd(id, password).then(function (response) {
+      $state.go('login');
+    });
+  };
+
   // FUNCTIONS
   // ============================================================
 }]);
