@@ -55,6 +55,8 @@ body
       margin: 0 10px 0 10px
       height: 350px
       width: 450px
+      @media screen and(max-width:900px)
+        display: none
     .homeText
       letter-spacing: 1px
       font-family: 'Indie Flower'
@@ -74,3 +76,27 @@ body
       p
         text-align: justify
         font-size: 20px
+
+.iconHolder
+  display: flex
+  flex-direction: row
+  justify-content: space-around
+  align-items: center
+  text-align: center
+  li
+    // min-width: 18.5%
+    width: 20%
+    list-style-type: none
+    text-decoration: none
+    letter-spacing: 1px
+    border: .25px solid rgba(23, 166, 151, 1)
+    margin: 5px
+    padding: 5px
+    border-radius: 25px
+    &:hover
+      background-color: rgb(190, 218, 211)
+      font-weight: bolder
+    a
+      text-decoration: none
+      span
+        margin: 0 -3px

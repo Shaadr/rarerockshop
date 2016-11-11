@@ -41,8 +41,6 @@ angular.module("rrs").controller("cartCtrl", function($scope, cart, user, $state
     .then(function(response) {
       $scope.cart = response.data.cart;
       $scope.products = response.data.products;
-
-      console.log("HI");
       $scope.sTotal = 0;
       for (var i=0; i < $scope.products.length; i++) {
         $scope.sTotal += $scope.products[i].price;
@@ -71,7 +69,6 @@ angular.module("rrs").controller("cartCtrl", function($scope, cart, user, $state
   $scope.placeOrder = function(id, orderid) {
 			cartService.placeOrder(id, orderid)
 				.then(function(response) {
-					console.log(response.data);
 					$state.go('orderSuccess');
 				});
 		};

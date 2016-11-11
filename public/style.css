@@ -17,7 +17,8 @@
   border-radius: 30px;
   background-color: #F4F4F4;
   margin: 10px;
-  max-height: 400px; }
+  max-height: 400px;
+  min-width: 480px; }
 
 .atext {
   text-align: justify;
@@ -25,8 +26,8 @@
   color: #C0B283; }
 
 .aboutImage {
-  height: 350px;
-  width: 500px;
+  max-height: 350px;
+  max-width: 500px;
   margin: 10px; }
 
 .mainAccountContainer {
@@ -216,6 +217,9 @@ body {
       margin: 0 10px 0 10px;
       height: 350px;
       width: 450px; }
+      @media screen and (max-width: 900px) {
+        .mainHomeContainer .homeRowContainer .homeImage {
+          display: none; } }
     .mainHomeContainer .homeRowContainer .homeText {
       letter-spacing: 1px;
       font-family: 'Indie Flower';
@@ -233,6 +237,29 @@ body {
       .mainHomeContainer .homeRowContainer .homeText p {
         text-align: justify;
         font-size: 20px; }
+
+.iconHolder {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center; }
+  .iconHolder li {
+    width: 20%;
+    list-style-type: none;
+    text-decoration: none;
+    letter-spacing: 1px;
+    border: 0.25px solid #17a697;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 25px; }
+    .iconHolder li:hover {
+      background-color: #bedad3;
+      font-weight: bolder; }
+    .iconHolder li a {
+      text-decoration: none; }
+      .iconHolder li a span {
+        margin: 0 -3px; }
 
 .mainLoginContainer {
   width: 97%;

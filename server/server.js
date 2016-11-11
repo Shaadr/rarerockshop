@@ -6,6 +6,8 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var massive = require('massive');
 
+
+
 //config
 var config = require('./config');
 
@@ -32,6 +34,8 @@ dbSetup.run();
 var modelCtrl = require('./controllers/modelCtrl');
 var userCtrl = require('./controllers/userCtrl');
 var cartCtrl = require('./controllers/cartCtrl')
+var contactCtrl = require('./controllers/contactCtrl')
+
 
 // SERVICES //
 var passport = require('./services/passport');
@@ -110,6 +114,8 @@ app.get('/api/cart', isAuthed, cartCtrl.getUserOrder)
 //order
 app.put('/api/order/complete/:orderid/:userid', cartCtrl.completeOrder, cartCtrl.createOrder)
 
+//email
+app.post('/contact-form', contactCtrl.sendMessage)
 
 // app.put('/model/:id', modelCtrl.update);
 // app.delete('/model/:id', modelCtrl.delete);

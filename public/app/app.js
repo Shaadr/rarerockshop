@@ -58,7 +58,20 @@ angular.module('rrs', ['ui.router', 'angular.filter'])
     .state('contact', {
       templateUrl: './app/views/contact/contact.html',
       controller: 'contactCtrl',
-      url: '/contact/'
+      url: '/contact/',
+      resolve: {
+        user: function(authService, $state) {
+          return authService.getCurrentUser()
+            .then(function(response) {
+              if (!response.data)
+                $state.go('login');
+              return response.data;
+            })
+            .catch(function(err) {
+              $state.go('login');
+            });
+        }
+      }
     })
     .state('lapidary', {
       templateUrl: './app/views/lapidary/lapidary.html',

@@ -8,22 +8,25 @@
 
     <div id="form-main">
       <div id="form-div">
-        <form class="form" id="form1">
+        <form class="form" id="form1" ng-model='user' data-ng-submit="sendMail(users.firstname, users.lastname, users.email, users.phone, message)">
 
           <p class="name">
-            <input name="name" type="text" class="feedback-input" placeholder="Name" id="name" />
+            <input name="name" type="text" class="feedback-input" placeholder="{{users.fistname}}" id="name" ng-model="users.firstname" />
+          </p>
+          <p class="name">
+            <input name="name" type="text" class="feedback-input" placeholder="{{users.lastname}}" id="name" ng-model="users.lastname" />
           </p>
 
           <p class="email">
-            <input name="email" type="text" class="feedback-input" id="email" placeholder="Email" />
+            <input name="email" type="text" class="feedback-input" id="email" placeholder="{{users.email}}" ng-model='users.email' />
           </p>
 
           <p class="email">
-            <input name="phone" type="text" class="feedback-input" id='phone' placeholder="Phone" />
+            <input name="phone" type="text" class="feedback-input" id='phone' placeholder="Phone" ng-model='users.phone' />
           </p>
 
           <p class="text">
-            <textarea name="text" class="feedback-input" id="comment" placeholder="Comment"></textarea>
+            <textarea name="text" class="feedback-input" id="message" placeholder="Message" ng-model='message' required></textarea>
           </p>
 
 

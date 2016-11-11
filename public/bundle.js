@@ -47,7 +47,17 @@ angular.module('rrs', ['ui.router', 'angular.filter']).config(["$stateProvider",
   }).state('contact', {
     templateUrl: './app/views/contact/contact.html',
     controller: 'contactCtrl',
-    url: '/contact/'
+    url: '/contact/',
+    resolve: {
+      user: ["authService", "$state", function (authService, $state) {
+        return authService.getCurrentUser().then(function (response) {
+          if (!response.data) $state.go('login');
+          return response.data;
+        }).catch(function (err) {
+          $state.go('login');
+        });
+      }]
+    }
   }).state('lapidary', {
     templateUrl: './app/views/lapidary/lapidary.html',
     controller: 'lapidaryCtrl',
@@ -265,6 +275,33 @@ angular.module("rrs").service("collectionService", ["$http", function ($http) {
 }]);
 // INITILIZE SERVICE
 // ============================================================
+angular.module("rrs").service("contactService", ["$http", function ($http) {
+  // CRUD FUNCTIONS
+  // ============================================================
+
+  this.sendMail = function (firstname, lastname, email, phone, message) {
+    return $http({
+      method: 'POST',
+      url: '/contact-form',
+      data: {
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        phone: phone,
+        message: message
+      }
+    }).then(function (response) {
+      console.log('serivice: ' + response + 'message: ' + response.message);
+      return response;
+    }).catch(function (err) {
+      console.log('contactService err: ' + err);
+    });
+  };
+  // OTHER FUNCTIONS
+  // ============================================================
+}]);
+// INITILIZE SERVICE
+// ============================================================
 angular.module("rrs").service("ProductsService", ["$http", function ($http) {
   // CRUD FUNCTIONS
   // ============================================================
@@ -310,15 +347,6 @@ angular.module('rrs').directive('headerDirective', function () {
 
 // INITILIZE CONTROLLER
 // ============================================================
-angular.module("rrs").controller("aboutCtrl", ["$scope", function ($scope) {
-  // VARIABLES
-  // ============================================================
-
-  // FUNCTIONS
-  // ============================================================
-}]);
-// INITILIZE CONTROLLER
-// ============================================================
 angular.module("rrs").controller("accountCtrl", ["$scope", "user", "accountService", "$state", function ($scope, user, accountService, $state) {
   // VARIABLES
   // ============================================================
@@ -340,6 +368,15 @@ angular.module("rrs").controller("accountCtrl", ["$scope", "user", "accountServi
       $state.go('login');
     });
   };
+
+  // FUNCTIONS
+  // ============================================================
+}]);
+// INITILIZE CONTROLLER
+// ============================================================
+angular.module("rrs").controller("aboutCtrl", ["$scope", function ($scope) {
+  // VARIABLES
+  // ============================================================
 
   // FUNCTIONS
   // ============================================================
@@ -398,8 +435,6 @@ angular.module("rrs").controller("cartCtrl", ["$scope", "cart", "user", "$state"
     cartService.getUserOrder($scope.id).then(function (response) {
       $scope.cart = response.data.cart;
       $scope.products = response.data.products;
-
-      console.log("HI");
       $scope.sTotal = 0;
       for (var i = 0; i < $scope.products.length; i++) {
         $scope.sTotal += $scope.products[i].price;
@@ -425,7 +460,6 @@ angular.module("rrs").controller("cartCtrl", ["$scope", "cart", "user", "$state"
 
   $scope.placeOrder = function (id, orderid) {
     cartService.placeOrder(id, orderid).then(function (response) {
-      console.log(response.data);
       $state.go('orderSuccess');
     });
   };
@@ -441,9 +475,18 @@ angular.module("rrs").controller("collectionCtrl", ["$scope", "products", functi
 }]);
 // INITILIZE CONTROLLER
 // ============================================================
-angular.module("rrs").controller("contactCtrl", ["$scope", function ($scope) {
+angular.module("rrs").controller("contactCtrl", ["$scope", "user", "contactService", "$state", function ($scope, user, contactService, $state) {
   // VARIABLES
   // ============================================================
+  $scope.users = user;
+
+  $scope.sendMail = function (firstname, lastname, email, phone, message) {
+    contactService.sendMail(firstname, lastname, email, phone, message).then(function (response) {
+      $scope.message = response.message;
+      alert('Message Successfully Sent! Thank you!');
+      $state.go('home');
+    });
+  };
 
   // FUNCTIONS
   // ============================================================
