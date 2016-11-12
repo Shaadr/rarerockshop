@@ -2,6 +2,8 @@ var app = require('./../server');
 var db = app.get('db')
 
 module.exports = {
+  
+
   addToCart: function (req, res, next) {
     var product = req.body;
 

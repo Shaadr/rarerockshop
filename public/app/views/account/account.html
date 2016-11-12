@@ -26,10 +26,14 @@
     <div class="orders">
       <h1>Orders</h1>
       <div class="singleOrder">
-        <h5>Order Number: {{ordernumber}}</h5>
+        <h5>Order Number: {{order.id}}</h5>
         <h5>Price: {{price}}</h5>
         <h5>OrderPlaced: {{dateplaced}}</h5>
         Tracking: <a href="https://www.ups.com/WebTracking/track">{{number}}</a>
+      </div>
+
+      <div  ng-repeat='product in products' class="allorder">
+        {{product}}
       </div>
 
       <!-- <div class="shipping">

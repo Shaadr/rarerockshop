@@ -11,14 +11,14 @@
         <form class="form" id="form1" ng-model='user' data-ng-submit="sendMail(users.firstname, users.lastname, users.email, users.phone, message)">
 
           <p class="name">
-            <input name="name" type="text" class="feedback-input" placeholder="{{users.fistname}}" id="name" ng-model="users.firstname" />
+            <input name="name" type="text" class="feedback-input" placeholder="{{users.fistname}}" id="name" ng-model="users.firstname" required />
           </p>
           <p class="name">
-            <input name="name" type="text" class="feedback-input" placeholder="{{users.lastname}}" id="name" ng-model="users.lastname" />
+            <input name="name" type="text" class="feedback-input" placeholder="{{users.lastname}}" id="name" ng-model="users.lastname"  required/>
           </p>
 
           <p class="email">
-            <input name="email" type="text" class="feedback-input" id="email" placeholder="{{users.email}}" ng-model='users.email' />
+            <input name="email" type="text" class="feedback-input" id="email" placeholder="{{users.email}}" ng-model='users.email' required/>
           </p>
 
           <p class="email">

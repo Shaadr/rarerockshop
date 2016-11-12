@@ -41,6 +41,9 @@ angular.module('rrs', ['ui.router', 'angular.filter'])
               $state.go('login');
             });
         }
+        // orders: function (cartService, $stateParams) {
+        //   return cartService.getOrders
+        // }
       }
     })
     .state('collection', {
@@ -120,7 +123,7 @@ angular.module('rrs', ['ui.router', 'angular.filter'])
     .state('account', {
       templateUrl: './app/views/account/account.html',
       controller: 'accountCtrl',
-      url: '/account/:id',
+      url: '/account/:id/:orderid',
       resolve: {
         user: function(authService, $state) {
           return authService.getCurrentUser()
@@ -133,6 +136,9 @@ angular.module('rrs', ['ui.router', 'angular.filter'])
               $state.go('login');
             });
         }
+        // orderHistory: function (cartService, $stateParams) {
+        //   return cartService.getOrderHistory();
+        // }
       }
     });
 

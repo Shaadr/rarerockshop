@@ -67,10 +67,12 @@ angular.module("rrs").controller("cartCtrl", function($scope, cart, user, $state
   };
 
   $scope.placeOrder = function(id, orderid) {
-			cartService.placeOrder(id, orderid)
-				.then(function(response) {
-					$state.go('orderSuccess');
-				});
+    console.log(id);
+    console.log(orderid);
+			// cartService.placeOrder(id, orderid)
+			// 	.then(function(response) {
+			// 		$state.go('orderSuccess');
+			// 	});
 		};
 
   });

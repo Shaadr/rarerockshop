@@ -1,28 +1,40 @@
 // INITILIZE CONTROLLER
 // ============================================================
-angular.module("rrs").controller("accountCtrl", function($scope, user, accountService, $state) {
+angular.module("rrs").controller("accountCtrl", function($scope, user, cartService, accountService, $state) {
   // VARIABLES
   // ============================================================
 
+  // $scope.order = orderHistory
   $scope.user = user
-  console.log(user);
 
   $scope.updateUsername = function (id, username) {
-    console.log(username, id);
     accountService.updateUsername(id, username)
     .then(function(response) {
-      console.log(response.data);
       $state.go('login');
     });
   }
 
   $scope.updatePwd = function (id, password) {
-    console.log(password, id);
     accountService.updatePwd(id, password)
     .then(function(response) {
       $state.go('login');
     });
   }
+
+  $scope.getCart = function () {
+    cartService.getUserOrder().then(function(response) {
+      $scope.order = response.data.order
+      $scope.products = response.data.products
+    });
+  }
+
+  $scope.getCart();
+
+  //  $scope.getOrderHistory = function () {
+   //
+  //  }
+
+
 
   // FUNCTIONS
   // ============================================================

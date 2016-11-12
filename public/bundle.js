@@ -32,6 +32,9 @@ angular.module('rrs', ['ui.router', 'angular.filter']).config(["$stateProvider",
           $state.go('login');
         });
       }]
+      // orders: function (cartService, $stateParams) {
+      //   return cartService.getOrders
+      // }
     }
   }).state('collection', {
     templateUrl: './app/views/collection/collection.html',
@@ -99,7 +102,7 @@ angular.module('rrs', ['ui.router', 'angular.filter']).config(["$stateProvider",
   }).state('account', {
     templateUrl: './app/views/account/account.html',
     controller: 'accountCtrl',
-    url: '/account/:id',
+    url: '/account/:id/:orderid',
     resolve: {
       user: ["authService", "$state", function (authService, $state) {
         return authService.getCurrentUser().then(function (response) {
@@ -109,6 +112,9 @@ angular.module('rrs', ['ui.router', 'angular.filter']).config(["$stateProvider",
           $state.go('login');
         });
       }]
+      // orderHistory: function (cartService, $stateParams) {
+      //   return cartService.getOrderHistory();
+      // }
     }
   });
 }]);
@@ -347,27 +353,38 @@ angular.module('rrs').directive('headerDirective', function () {
 
 // INITILIZE CONTROLLER
 // ============================================================
-angular.module("rrs").controller("accountCtrl", ["$scope", "user", "accountService", "$state", function ($scope, user, accountService, $state) {
+angular.module("rrs").controller("accountCtrl", ["$scope", "user", "cartService", "accountService", "$state", function ($scope, user, cartService, accountService, $state) {
   // VARIABLES
   // ============================================================
 
+  // $scope.order = orderHistory
   $scope.user = user;
-  console.log(user);
 
   $scope.updateUsername = function (id, username) {
-    console.log(username, id);
     accountService.updateUsername(id, username).then(function (response) {
-      console.log(response.data);
       $state.go('login');
     });
   };
 
   $scope.updatePwd = function (id, password) {
-    console.log(password, id);
     accountService.updatePwd(id, password).then(function (response) {
       $state.go('login');
     });
   };
+
+  $scope.getCart = function () {
+    cartService.getUserOrder().then(function (response) {
+      $scope.order = response.data.order;
+      $scope.products = response.data.products;
+    });
+  };
+
+  $scope.getCart();
+
+  //  $scope.getOrderHistory = function () {
+  //
+  //  }
+
 
   // FUNCTIONS
   // ============================================================
@@ -459,9 +476,12 @@ angular.module("rrs").controller("cartCtrl", ["$scope", "cart", "user", "$state"
   };
 
   $scope.placeOrder = function (id, orderid) {
-    cartService.placeOrder(id, orderid).then(function (response) {
-      $state.go('orderSuccess');
-    });
+    console.log(id);
+    console.log(orderid);
+    // cartService.placeOrder(id, orderid)
+    // 	.then(function(response) {
+    // 		$state.go('orderSuccess');
+    // 	});
   };
 }]);
 // INITILIZE CONTROLLER
