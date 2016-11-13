@@ -13,7 +13,6 @@ angular.module("rrs").controller("loginCtrl", function($scope, authService, $sta
           alert('User does not exist');
           $scope.user.password = '';
         } else {
-          console.log(response.data.id);
           $state.go('account', {id: response.data.id});
         }
       }).catch(function (err) {

@@ -22,7 +22,6 @@ angular.module("rrs").controller("cartCtrl", function($scope, cart, user, $state
   }()
 
   $scope.grandTotal = function () {
-    console.log("inside gtotal");
     $scope.gTotal = 0;
     $scope.gTotal = $scope.sTotal + ($scope.sTotal * $scope.tax) + $scope.shipping
     $scope.gTotal = +$scope.gTotal.toFixed(2);
@@ -47,7 +46,6 @@ angular.module("rrs").controller("cartCtrl", function($scope, cart, user, $state
       }
       $scope.gTotal = $scope.sTotal + ($scope.sTotal * $scope.tax) + $scope.shipping
       $scope.gTotal = $scope.gTotal.toFixed(2);
-      console.log($scope.gTotal);
       if ($scope.sTotal === 0) {
         $scope.shipping = 0
         $scope.gTotal = 0
@@ -63,12 +61,11 @@ angular.module("rrs").controller("cartCtrl", function($scope, cart, user, $state
     cartService.removeFromCart(id)
     .then(function(response) {
       $scope.getOrder();
+      alert('Item Successfully Removed');
     });
   };
 
   $scope.placeOrder = function(id, orderid) {
-    console.log(id);
-    console.log(orderid);
 			// cartService.placeOrder(id, orderid)
 			// 	.then(function(response) {
 			// 		$state.go('orderSuccess');

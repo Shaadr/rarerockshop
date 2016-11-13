@@ -16,7 +16,6 @@ angular.module("rrs").service("contactService", function($http) {
           message: message
         }
       }).then(function(response) {
-        console.log('serivice: ' + response + 'message: ' + response.message);
         return response
       }).catch(function(err) {
         console.log('contactService err: ' + err);

@@ -6,7 +6,6 @@ angular.module("rrs").directive('selectFix', function() {
                 if ( value === null ) {
                     value = '';
                 }
-                console.log(value);
                 return value;
             });
         }

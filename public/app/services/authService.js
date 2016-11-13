@@ -34,7 +34,6 @@ angular.module('rrs').service('authService', function ($http) {
       url: '/register',
       data: user
     }).then(function (response) {
-      console.log(response);
       return response;
     });
   };

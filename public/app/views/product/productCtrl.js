@@ -3,17 +3,14 @@
 angular.module("rrs").controller("productCtrl", function($scope, product, cartService, $state) {
 
 $scope.product = product;
-console.log(product);
 $scope.qty = 1;
 
 $scope.getCart = function () {
   cartService.getUserOrder()
   .then(function(response) {
-    console.log(response);
 
     if (response) {
       $scope.orderid = response.data.order.id
-      console.log($scope.orderid);
     } else {
       $scope.orderid = null;
     }
@@ -27,7 +24,7 @@ $scope.addToCart = function (id, productid, qty) {
   }
   cartService.addToCart(id, productid, qty)
   .then(function (response) {
-    console.log(response.data)
+    alert('Item Added to Cart')
   })
 }
 

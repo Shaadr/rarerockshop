@@ -15,7 +15,6 @@ function hashPassword(password) {
 
 module.exports = {
 	createUser: function (req, res, next) {
-		console.log(req.body);
 		db.user_create([req.body.firstname, req.body.lastname, req.body.username, req.body.email, req.body.password, req.body.datecreated, req.body.phone, req.body.isadmin], function(err, user) {
 			res.send(200).json(user)
 		})
@@ -74,7 +73,6 @@ module.exports = {
 		// If user isnt on the session, then return error status
 		if (!req.user) return res.status(401)
 			.send('current user not defined');
-			console.log(req.user);
 
 		// Remove password for security
 		var user = req.user[0];
@@ -86,7 +84,6 @@ module.exports = {
 	},
 
 	update: function(req, res, next) {
-		console.log("lksdjflsd   "+req.body.username);
 
 		db.user_username_update([req.params.id, req.body.username], function(err, result) {
 			if (err) console.log("I AM ERR " + err);;
@@ -96,12 +93,9 @@ module.exports = {
 	},
 
 		updatePwd: function(req, res, next) {
-			console.log("reqbody " + req.body);
 			var user = req.body;
 			user.password = hashPassword(user.password);
-			// console.log("lksdjflsd   "+req.body.username);
 			db.user_password_update([req.params.id, req.body.password], function(err, result) {
-				// console.log("immapassword" + user.password);
 				if (err) console.log("I AM ERR " + err);
 				// user.password = hashPassword(user.password);
 				res.status(200)

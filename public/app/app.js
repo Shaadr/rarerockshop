@@ -97,7 +97,6 @@ angular.module('rrs', ['ui.router', 'angular.filter'])
       url: '/product/:id',
       resolve: {
         product: function (shopService, $stateParams) {
-          console.log($stateParams);
           return shopService.getInventoryById($stateParams.id)
             .then(function(response) {
               return response.data;

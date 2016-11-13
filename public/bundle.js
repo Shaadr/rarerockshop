@@ -79,7 +79,6 @@ angular.module('rrs', ['ui.router', 'angular.filter']).config(["$stateProvider",
     url: '/product/:id',
     resolve: {
       product: ["shopService", "$stateParams", function (shopService, $stateParams) {
-        console.log($stateParams);
         return shopService.getInventoryById($stateParams.id).then(function (response) {
           return response.data;
         });
@@ -126,7 +125,6 @@ angular.module("rrs").directive('selectFix', function () {
                 if (value === null) {
                     value = '';
                 }
-                console.log(value);
                 return value;
             });
         }
@@ -139,7 +137,6 @@ angular.module("rrs").service("accountService", ["$http", function ($http) {
   // ============================================================
 
   this.updateUsername = function (id, username) {
-    console.log("THERVICE" + username, id);
     return $http({
       method: 'PUT',
       url: '/account/update/' + id,
@@ -151,7 +148,6 @@ angular.module("rrs").service("accountService", ["$http", function ($http) {
   };
 
   this.updatePwd = function (id, password) {
-    console.log("THERVICE" + password, id);
     return $http({
       method: 'PUT',
       url: '/pwd/' + id,
@@ -208,7 +204,6 @@ angular.module('rrs').service('authService', ["$http", function ($http) {
       url: '/register',
       data: user
     }).then(function (response) {
-      console.log(response);
       return response;
     });
   };
@@ -297,7 +292,6 @@ angular.module("rrs").service("contactService", ["$http", function ($http) {
         message: message
       }
     }).then(function (response) {
-      console.log('serivice: ' + response + 'message: ' + response.message);
       return response;
     }).catch(function (err) {
       console.log('contactService err: ' + err);
@@ -353,6 +347,15 @@ angular.module('rrs').directive('headerDirective', function () {
 
 // INITILIZE CONTROLLER
 // ============================================================
+angular.module("rrs").controller("aboutCtrl", ["$scope", function ($scope) {
+  // VARIABLES
+  // ============================================================
+
+  // FUNCTIONS
+  // ============================================================
+}]);
+// INITILIZE CONTROLLER
+// ============================================================
 angular.module("rrs").controller("accountCtrl", ["$scope", "user", "cartService", "accountService", "$state", function ($scope, user, cartService, accountService, $state) {
   // VARIABLES
   // ============================================================
@@ -391,15 +394,6 @@ angular.module("rrs").controller("accountCtrl", ["$scope", "user", "cartService"
 }]);
 // INITILIZE CONTROLLER
 // ============================================================
-angular.module("rrs").controller("aboutCtrl", ["$scope", function ($scope) {
-  // VARIABLES
-  // ============================================================
-
-  // FUNCTIONS
-  // ============================================================
-}]);
-// INITILIZE CONTROLLER
-// ============================================================
 angular.module("rrs").controller("adminCtrl", ["$scope", function ($scope) {
   // VARIABLES
   // ============================================================
@@ -409,7 +403,6 @@ angular.module("rrs").controller("adminCtrl", ["$scope", function ($scope) {
   // ============================================================
   $scope.getImageUrl = function (event) {
     var file = document.querySelector('input[type=file]').files[0];
-    console.log(file);
   };
 }]);
 // INITILIZE CONTROLLER
@@ -435,7 +428,6 @@ angular.module("rrs").controller("cartCtrl", ["$scope", "cart", "user", "$state"
   }();
 
   $scope.grandTotal = function () {
-    console.log("inside gtotal");
     $scope.gTotal = 0;
     $scope.gTotal = $scope.sTotal + $scope.sTotal * $scope.tax + $scope.shipping;
     $scope.gTotal = +$scope.gTotal.toFixed(2);
@@ -458,7 +450,6 @@ angular.module("rrs").controller("cartCtrl", ["$scope", "cart", "user", "$state"
       }
       $scope.gTotal = $scope.sTotal + $scope.sTotal * $scope.tax + $scope.shipping;
       $scope.gTotal = $scope.gTotal.toFixed(2);
-      console.log($scope.gTotal);
       if ($scope.sTotal === 0) {
         $scope.shipping = 0;
         $scope.gTotal = 0;
@@ -472,12 +463,11 @@ angular.module("rrs").controller("cartCtrl", ["$scope", "cart", "user", "$state"
   $scope.removeFromCart = function (id) {
     cartService.removeFromCart(id).then(function (response) {
       $scope.getOrder();
+      alert('Item Successfully Removed');
     });
   };
 
   $scope.placeOrder = function (id, orderid) {
-    console.log(id);
-    console.log(orderid);
     // cartService.placeOrder(id, orderid)
     // 	.then(function(response) {
     // 		$state.go('orderSuccess');
@@ -501,11 +491,17 @@ angular.module("rrs").controller("contactCtrl", ["$scope", "user", "contactServi
   $scope.users = user;
 
   $scope.sendMail = function (firstname, lastname, email, phone, message) {
-    contactService.sendMail(firstname, lastname, email, phone, message).then(function (response) {
-      $scope.message = response.message;
-      alert('Message Successfully Sent! Thank you!');
-      $state.go('home');
-    });
+    if (!phone || phone && /[-()]/.test(phone) && (phone.length === 12 || phone.length === 13 || phone.length === 14)) {
+      console.log('made it out');
+      contactService.sendMail(firstname, lastname, email, phone, message).then(function (response) {
+        $scope.message = response.message;
+        alert('Message Successfully Sent! Thank you!');
+        $state.go('home');
+      });
+    } else {
+      alert("Invalid Phone Number. Use Format: (888)888-8888 or 888-888-8888");
+      return;
+    }
   };
 
   // FUNCTIONS
@@ -544,7 +540,6 @@ angular.module("rrs").controller("loginCtrl", ["$scope", "authService", "$state"
         alert('User does not exist');
         $scope.user.password = '';
       } else {
-        console.log(response.data.id);
         $state.go('account', { id: response.data.id });
       }
     }).catch(function (err) {
@@ -579,16 +574,13 @@ angular.module("rrs").controller("orderSuccessCtrl", ["$scope", function ($scope
 angular.module("rrs").controller("productCtrl", ["$scope", "product", "cartService", "$state", function ($scope, product, cartService, $state) {
 
   $scope.product = product;
-  console.log(product);
   $scope.qty = 1;
 
   $scope.getCart = function () {
     cartService.getUserOrder().then(function (response) {
-      console.log(response);
 
       if (response) {
         $scope.orderid = response.data.order.id;
-        console.log($scope.orderid);
       } else {
         $scope.orderid = null;
       }
@@ -601,7 +593,7 @@ angular.module("rrs").controller("productCtrl", ["$scope", "product", "cartServi
       return alert('Please login before adding an item');
     }
     cartService.addToCart(id, productid, qty).then(function (response) {
-      console.log(response.data);
+      alert('Item Added to Cart');
     });
   };
 }]);

@@ -5,7 +5,6 @@ angular.module("rrs").service("accountService", function($http) {
   // ============================================================
 
   this.updateUsername = function(id, username) {
-    console.log("THERVICE" + username, id);
     return $http({
       method: 'PUT',
       url: '/account/update/'+ id,
@@ -17,7 +16,6 @@ angular.module("rrs").service("accountService", function($http) {
   };
 
   this.updatePwd= function(id, password) {
-    console.log("THERVICE" + password, id);
     return $http({
       method: 'PUT',
       url: '/pwd/'+ id,
