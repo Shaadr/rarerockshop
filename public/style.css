@@ -1,4 +1,50 @@
 @import url("https://fonts.googleapis.com/css?family=Bangers|Bungee+Inline|Fontdiner+Swanky|Indie+Flower|Kalam:700|Prosto+One|Tillana:600");
+* {
+  letter-spacing: 1px; }
+
+.navbar-default {
+  background-color: #ebebeb;
+  min-width: 100%; }
+
+.headerBackground {
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
+  max-width: 100%; }
+
+.mainTitleWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px; }
+  .mainTitleWrapper .mainTitleContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 60vh;
+    margin-top: 52px;
+    border-radius: 25px;
+    background-repeat: no-repeat; }
+    .mainTitleWrapper .mainTitleContainer h1 {
+      color: #17a697;
+      text-align: center;
+      font-size: 80px;
+      font-family: 'Indie Flower', cursive;
+      background: #383838;
+      border-radius: 20px;
+      opacity: .85;
+      padding: 15px;
+      letter-spacing: 2px; }
+    .mainTitleWrapper .mainTitleContainer h3 {
+      color: #373737;
+      font-size: 35px;
+      text-align: center;
+      font-family: 'Indie Flower', cursive; }
+
+hr {
+  border: .5px white solid; }
+
+@import url("https://fonts.googleapis.com/css?family=Bangers|Bungee+Inline|Fontdiner+Swanky|Indie+Flower|Kalam:700|Prosto+One|Tillana:600");
 .aboutRowContainer {
   display: flex;
   flex-direction: row;
@@ -23,12 +69,13 @@
 .atext {
   text-align: justify;
   font-size: 20px;
-  color: #C0B283; }
+  color: #17a697; }
 
 .aboutImage {
   max-height: 350px;
   max-width: 500px;
-  margin: 10px; }
+  margin: 10px;
+  border-radius: 25px; }
 
 .mainAccountContainer {
   width: 90%;
@@ -40,7 +87,7 @@
   border-radius: 25px;
   font-family: 'Indie Flower';
   font-size: 20px;
-  color: #C0B283;
+  color: #17a697;
   padding-bottom: 15px;
   text-align: center; }
   @media (max-width: 780px) {
@@ -167,6 +214,8 @@
 .collectionCaption {
   font-family: 'Indie Flower';
   text-align: center; }
+  .collectionCaption h3 {
+    color: #17a697; }
 
 @import url("https://fonts.googleapis.com/css?family=Bangers|Bungee+Inline|Fontdiner+Swanky|Indie+Flower|Kalam:700|Prosto+One|Tillana:600");
 body {
@@ -272,7 +321,7 @@ body {
   background-color: #F4F4F4;
   border-radius: 25px;
   font-family: 'Indie Flower';
-  color: #C0B283; }
+  color: #17a697; }
   @media (max-width: 780px) {
     .mainLoginContainer {
       flex-direction: column; } }
@@ -285,17 +334,24 @@ body {
       text-align: center; }
 
 .longerinput {
-  width: 100%; }
+  width: 100%;
+  border-radius: 4px; }
 
 .loginButton {
-  margin-top: 15px; }
+  margin-top: 15px;
+  border-radius: 4px;
+  background: none; }
 
 .newUserForm {
   width: 80%;
   text-align: center; }
   .newUserForm form input {
     margin: 5px 2px 5px 2px;
-    width: 75%; }
+    width: 75%;
+    border-radius: 4px; }
+  .newUserForm form button {
+    border-radius: 4px;
+    background: none; }
 
 .stateSelectContainer {
   width: auto; }
@@ -304,52 +360,6 @@ body {
   width: 20%;
   margin: auto;
   text-align: center; }
-
-@import url("https://fonts.googleapis.com/css?family=Bangers|Bungee+Inline|Fontdiner+Swanky|Indie+Flower|Kalam:700|Prosto+One|Tillana:600");
-* {
-  letter-spacing: 1px; }
-
-.navbar-default {
-  background-color: #ebebeb;
-  min-width: 100%; }
-
-.headerBackground {
-  background-color: #f8f8f8;
-  border-color: #e7e7e7;
-  max-width: 100%; }
-
-.mainTitleWrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: 15px; }
-  .mainTitleWrapper .mainTitleContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 90%;
-    height: 60vh;
-    margin-top: 52px;
-    border-radius: 25px;
-    background-repeat: no-repeat; }
-    .mainTitleWrapper .mainTitleContainer h1 {
-      color: #C0B283;
-      text-align: center;
-      font-size: 80px;
-      font-family: 'Indie Flower', cursive;
-      background: #383838;
-      border-radius: 20px;
-      opacity: .85;
-      padding: 15px;
-      letter-spacing: 2px; }
-    .mainTitleWrapper .mainTitleContainer h3 {
-      color: #373737;
-      font-size: 35px;
-      text-align: center;
-      font-family: 'Indie Flower', cursive; }
-
-hr {
-  border: .5px white solid; }
 
 .successContainer {
   margin: auto;
@@ -367,7 +377,7 @@ hr {
   .successContainer h1 {
     margin-top: 100px;
     font-size: 60px;
-    color: #17A697;
+    color: #17a697;
     background: rgba(55, 55, 55, 0.85);
     padding: 15px;
     border-radius: 25px; }
@@ -386,7 +396,7 @@ hr {
     padding: 15px; }
     .successWrapper .successHeader h3 {
       font-size: 30px;
-      color: #17A697; }
+      color: #17a697; }
       @media (max-width: 790px) {
         .successWrapper .successHeader h3 {
           font-size: 15px; } }
@@ -395,7 +405,7 @@ hr {
   display: flex;
   flex-direction: row;
   font-family: 'Indie Flower', cursive;
-  color: #17A697;
+  color: #17a697;
   padding: 15px;
   width: 70%;
   min-width: 60%; }
@@ -435,7 +445,7 @@ hr {
   margin-top: 52px;
   margin-bottom: 20px;
   font-family: 'Indie Flower';
-  color: #C0B283;
+  color: #17a697;
   font-size: 50px; }
 
 .carouselContainer {
@@ -461,7 +471,7 @@ hr {
   padding: 10px;
   font-family: 'Indie Flower';
   font-size: 30px;
-  color: #C0B283; }
+  color: #17a697; }
 
 .addtocart {
   margin-bottom: 20px;
@@ -478,7 +488,9 @@ hr {
   margin: auto;
   margin-top: 15px;
   font-family: 'Indie Flower';
-  color: #C0B283; }
+  color: #17a697;
+  border-radius: 4px;
+  background: #F4F4F4; }
 
 .shopSort {
   width: 100%;
@@ -493,20 +505,28 @@ hr {
 
 .shopProductContainer {
   height: 350px;
-  background-color: #F4F4F4; }
+  background-color: #F4F4F4;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #17a697;
+  font-family: 'Indie Flower';
+  text-align: center; }
+  .shopProductContainer div a {
+    text-decoration: none; }
+    .shopProductContainer div a:hover {
+      text-decoration: none; }
+    .shopProductContainer div a h3 {
+      font-size: 30px;
+      color: #17a697; }
+      .shopProductContainer div a h3:hover {
+        color: teal;
+        font-weight: bolder;
+        font-size: 32px; }
 
 .shopImg {
   max-height: 200px;
   max-width: 300px;
   padding-top: 10px; }
-
-.shopCaption {
-  font-family: 'Indie Flower';
-  text-align: center; }
-  .shopCaption h3 {
-    color: #C0B283;
-    text-decoration: none; }
-    .shopCaption h3:hover {
-      color: #373737;
-      text-decoration: none;
-      cursor: pointer; }

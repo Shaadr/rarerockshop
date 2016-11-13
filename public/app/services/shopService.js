@@ -2,10 +2,17 @@
 // ============================================================
 angular.module("rrs").service("shopService", function($http) {
 
-  this.getInventory = function() {
+  this.getShopInventory = function() {
     return $http({
       method: 'GET',
-      url: '/api/inventory'
+      url: '/api/shop/inventory'
+    });
+  };
+
+  this.getCollectionInventory = function() {
+    return $http({
+      method: 'GET',
+      url: '/api/collection/inventory'
     });
   };
 

@@ -1,12 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Bangers|Bungee+Inline|Fontdiner+Swanky|Indie+Flower|Kalam:700|Prosto+One|Tillana:600')
 
+$teal: rgba(23, 166, 151, 1)
+
 .storeSearchBar
   width: 40vw
   margin: auto
-  // border-radius: 25px
   margin-top: 15px
   font-family: 'Indie Flower'
-  color: #C0B283
+  color: $teal
+  border-radius: 4px
+  background: #F4F4F4
 
 .shopSort
   width: 100%
@@ -22,19 +25,37 @@
 .shopProductContainer
   height: 350px
   background-color: #F4F4F4
+  border-radius: 25px
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+  color: $teal
+  font-family: 'Indie Flower'
+  text-align: center
+  div
+    a
+      text-decoration: none
+      &:hover
+        text-decoration: none
+      h3
+        font-size: 30px
+        color: $teal
+        // font-family: 'Indie Flower'
+        &:hover
+          color: teal
+          font-weight: bolder
+          font-size: 32px
 
 .shopImg
   max-height: 200px
   max-width: 300px
   padding-top: 10px
 
-.shopCaption
-  font-family: 'Indie Flower'
-  text-align: center
-  h3
-    color: #C0B283
-    text-decoration: none
-    &:hover
-      color: #373737
-      text-decoration: none
-      cursor: pointer
+  // h3
+  //   color: $teal
+  //   text-decoration: none
+  //   &:hover
+  //     color: #373737
+  //     text-decoration: none
+  //     cursor: pointer

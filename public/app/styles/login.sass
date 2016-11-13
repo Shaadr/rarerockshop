@@ -1,3 +1,5 @@
+$teal: rgba(23, 166, 151, 1)
+
 .mainLoginContainer
   width: 97%
   margin: 13px
@@ -9,7 +11,7 @@
   background-color: #F4F4F4
   border-radius: 25px
   font-family: 'Indie Flower'
-  color: #C0B283
+  color: $teal
   @media (max-width: 780px)
     flex-direction: column
   .loginContainer
@@ -22,9 +24,12 @@
 
 .longerinput
   width: 100%
+  border-radius: 4px
 
 .loginButton
   margin-top: 15px
+  border-radius: 4px
+  background: none;
 
 .newUserForm
   width: 80%
@@ -33,6 +38,10 @@
     input
       margin: 5px 2px 5px 2px
       width: 75%
+      border-radius: 4px
+    button
+      border-radius: 4px
+      background: none;
 
 .stateSelectContainer
   width: auto

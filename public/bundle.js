@@ -42,7 +42,7 @@ angular.module('rrs', ['ui.router', 'angular.filter']).config(["$stateProvider",
     url: '/collection',
     resolve: {
       products: ["shopService", function (shopService) {
-        return shopService.getInventory().then(function (response) {
+        return shopService.getCollectionInventory().then(function (response) {
           return response.data;
         });
       }]
@@ -93,7 +93,7 @@ angular.module('rrs', ['ui.router', 'angular.filter']).config(["$stateProvider",
     url: '/shop',
     resolve: {
       products: ["shopService", function (shopService) {
-        return shopService.getInventory().then(function (response) {
+        return shopService.getShopInventory().then(function (response) {
           return response.data;
         });
       }]
@@ -318,10 +318,17 @@ angular.module("rrs").service("ProductsService", ["$http", function ($http) {
 // ============================================================
 angular.module("rrs").service("shopService", ["$http", function ($http) {
 
-  this.getInventory = function () {
+  this.getShopInventory = function () {
     return $http({
       method: 'GET',
-      url: '/api/inventory'
+      url: '/api/shop/inventory'
+    });
+  };
+
+  this.getCollectionInventory = function () {
+    return $http({
+      method: 'GET',
+      url: '/api/collection/inventory'
     });
   };
 

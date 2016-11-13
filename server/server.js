@@ -79,8 +79,17 @@ app.get('/logout', function (req,res,next) {
   .send('logged out');
 });
 
-app.get('/api/inventory', function (req, res) {
-  db.run("select * from products", function (err, response) {
+app.get('/api/collection/inventory', function (req, res) {
+  db.product_from_collection([true], function (err, response) {
+    if (err) {
+      res.send("Error: ", err);
+    }
+    res.send(response);
+  });
+});
+
+app.get('/api/shop/inventory', function (req, res) {
+  db.product_from_shop([true], function (err, response) {
     if (err) {
       res.send("Error: ", err);
     }

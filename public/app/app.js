@@ -52,7 +52,7 @@ angular.module('rrs', ['ui.router', 'angular.filter'])
       url: '/collection',
       resolve: {
         products: function (shopService) {
-          return shopService.getInventory().then(function(response) {
+          return shopService.getCollectionInventory().then(function(response) {
             return response.data;
           });
         }
@@ -113,7 +113,7 @@ angular.module('rrs', ['ui.router', 'angular.filter'])
       url: '/shop',
       resolve: {
         products: function (shopService) {
-          return shopService.getInventory().then(function(response) {
+          return shopService.getShopInventory().then(function(response) {
             return response.data;
           });
         }
