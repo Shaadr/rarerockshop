@@ -21,7 +21,7 @@ module.exports = {
 
     var mailOptions = {
       from: data.email, // sender address
-      to: 'mikephanks@gmail.com', // list of receivers
+      to: config.GMAILADDRESS, // list of receivers
       subject: 'Hello from ' + data.firstname + ' ' + data.lastname, // Subject line
       // text: 'DO NOT RESPOND TO THIS EMAIL!  Phone: '+ data.phone  +' Message: ' + data.message  + ' From: ' + data.email, // plaintext body
       html: emailTemplate(data.firstname, data.lastname, data.phone, data.email, data.message)
