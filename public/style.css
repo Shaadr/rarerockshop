@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Bangers|Bungee+Inline|Fontdiner+Swanky|Indie+Flower|Kalam:700|Prosto+One|Tillana:600");
 * {
   letter-spacing: 1px; }
@@ -24,7 +25,8 @@
     height: 60vh;
     margin-top: 52px;
     border-radius: 25px;
-    background-repeat: no-repeat; }
+    background-repeat: no-repeat;
+    max-height: 60vh; }
     .mainTitleWrapper .mainTitleContainer h1 {
       color: #17a697;
       text-align: center;
@@ -32,9 +34,12 @@
       font-family: 'Indie Flower', cursive;
       background: #383838;
       border-radius: 20px;
-      opacity: .85;
+      opacity: .85ß;
       padding: 15px;
       letter-spacing: 2px; }
+      @media (max-width: 770px) {
+        .mainTitleWrapper .mainTitleContainer h1 {
+          font-size: 40px; } }
     .mainTitleWrapper .mainTitleContainer h3 {
       color: #373737;
       font-size: 35px;
@@ -50,7 +55,8 @@ hr {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  padding: 25px; }
+  padding: 25px;
+  height: 80vh; }
   @media screen and (max-width: 850px) {
     .aboutRowContainer {
       flex-direction: column; } }
@@ -122,10 +128,10 @@ hr {
 
 .singleOrder {
   background-color: #373737;
-    background-color-border-radius: 25px;
-    background-color-opacity: .8;
-    background-color-margin: 5px;
-    background-color-padding: 5px; }
+  border-radius: 25px;
+  opacity: .8;
+  margin: 5px;
+  padding: 5px; }
 
 .accountHr {
   color: #C0B283; }
@@ -233,7 +239,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   width: 90%;
-  height: 87vh;
+  height: 89vh;
   margin-top: 52px;
   border-radius: 25px; }
   .topHeader h1 {
@@ -504,29 +510,49 @@ body {
   margin: auto; }
 
 .shopProductContainer {
-  height: 350px;
+  height: 480px;
+  max-height: 480px;
   background-color: #F4F4F4;
   border-radius: 25px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   flex-direction: column;
   color: #17a697;
   font-family: 'Indie Flower';
-  text-align: center; }
+  text-align: center;
+  padding: 10px; }
+  @media (max-width: 770px) {
+    .shopProductContainer {
+      max-width: 75%;
+      margin: 15px auto; } }
   .shopProductContainer div a {
     text-decoration: none; }
     .shopProductContainer div a:hover {
       text-decoration: none; }
     .shopProductContainer div a h3 {
-      font-size: 30px;
+      font-size: 28px;
       color: #17a697; }
+      @media (max-width: 780px) {
+        .shopProductContainer div a h3 {
+          font-size: 16px; } }
       .shopProductContainer div a h3:hover {
         color: teal;
-        font-weight: bolder;
-        font-size: 32px; }
+        font-weight: bold; }
 
 .shopImg {
   max-height: 200px;
   max-width: 300px;
   padding-top: 10px; }
+
+.shopCaption {
+  justify-content: space-between; }
+  .shopCaption a {
+    padding: 5px; }
+  @media (max-width: 780px) {
+    .shopCaption p {
+      font-size: 14px; } }
+
+@media (max-width: 770px) {
+  .mobile {
+    justify-content: space-around; } }

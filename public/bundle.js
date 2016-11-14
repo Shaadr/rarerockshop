@@ -354,15 +354,6 @@ angular.module('rrs').directive('headerDirective', function () {
 
 // INITILIZE CONTROLLER
 // ============================================================
-angular.module("rrs").controller("aboutCtrl", ["$scope", function ($scope) {
-  // VARIABLES
-  // ============================================================
-
-  // FUNCTIONS
-  // ============================================================
-}]);
-// INITILIZE CONTROLLER
-// ============================================================
 angular.module("rrs").controller("accountCtrl", ["$scope", "user", "cartService", "accountService", "$state", function ($scope, user, cartService, accountService, $state) {
   // VARIABLES
   // ============================================================
@@ -395,6 +386,15 @@ angular.module("rrs").controller("accountCtrl", ["$scope", "user", "cartService"
   //
   //  }
 
+
+  // FUNCTIONS
+  // ============================================================
+}]);
+// INITILIZE CONTROLLER
+// ============================================================
+angular.module("rrs").controller("aboutCtrl", ["$scope", function ($scope) {
+  // VARIABLES
+  // ============================================================
 
   // FUNCTIONS
   // ============================================================
@@ -576,6 +576,11 @@ angular.module("rrs").controller("orderSuccessCtrl", ["$scope", function ($scope
   // FUNCTIONS
   // ============================================================
 }]);
+angular.module("rrs").controller("shopCtrl", ["$scope", "products", function ($scope, products) {
+
+    $scope.products = products;
+    $scope.search = "";
+}]);
 // INITILIZE CONTROLLER
 // ============================================================
 angular.module("rrs").controller("productCtrl", ["$scope", "product", "cartService", "$state", function ($scope, product, cartService, $state) {
@@ -603,9 +608,4 @@ angular.module("rrs").controller("productCtrl", ["$scope", "product", "cartServi
       alert('Item Added to Cart');
     });
   };
-}]);
-angular.module("rrs").controller("shopCtrl", ["$scope", "products", function ($scope, products) {
-
-    $scope.products = products;
-    $scope.search = "";
 }]);

@@ -23,39 +23,49 @@ $teal: rgba(23, 166, 151, 1)
   margin: auto
 
 .shopProductContainer
-  height: 350px
+  height: 480px
+  max-height: 480px
   background-color: #F4F4F4
   border-radius: 25px
   display: flex
-  justify-content: center
+  justify-content: space-around
   align-items: center
   flex-direction: column
   color: $teal
   font-family: 'Indie Flower'
   text-align: center
+  padding: 10px
+  @media (max-width: 770px)
+    max-width: 75%
+    margin: 15px auto
   div
     a
       text-decoration: none
       &:hover
         text-decoration: none
       h3
-        font-size: 30px
+        font-size: 28px
         color: $teal
-        // font-family: 'Indie Flower'
+        @media (max-width: 780px)
+          font-size: 16px
         &:hover
           color: teal
-          font-weight: bolder
-          font-size: 32px
+          font-weight: bold
+          // font-size: 30px
 
 .shopImg
   max-height: 200px
   max-width: 300px
   padding-top: 10px
 
-  // h3
-  //   color: $teal
-  //   text-decoration: none
-  //   &:hover
-  //     color: #373737
-  //     text-decoration: none
-  //     cursor: pointer
+.shopCaption
+  justify-content: space-between
+  a
+    padding: 5px
+  p
+    @media(max-width: 780px)
+      font-size: 14px
+
+.mobile
+  @media (max-width: 770px)
+    justify-content: space-around

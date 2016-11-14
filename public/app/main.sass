@@ -29,6 +29,7 @@ $teal: rgba(23, 166, 151, 1)
     margin-top: 52px
     border-radius: 25px
     background-repeat: no-repeat
+    max-height:  60vh
     h1
       color: $teal
       text-align: center
@@ -36,9 +37,11 @@ $teal: rgba(23, 166, 151, 1)
       font-family: 'Indie Flower', cursive
       background: #383838
       border-radius: 20px
-      opacity: .85
+      opacity: .85ß
       padding: 15px
       letter-spacing: 2px
+      @media (max-width: 770px)
+        font-size: 40px
     h3
       color: #373737
       font-size: 35px
